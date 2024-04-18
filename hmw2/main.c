@@ -9,11 +9,13 @@
 #include <fcntl.h>
 #include <time.h>
 #include <errno.h>
+#include <stdatomic.h>
 
 #define FIFO1 "fifo1"
 #define FIFO2 "fifo2"
 #define MAX_ELEMENTS 3
-int child_count = 0; // Counter for child processes
+// int child_count = 0; // Counter for child processes
+_Atomic(int) child_count = 0;
 pid_t pid1, pid2;
 
 // Function to handle SIGCHLD signal
@@ -35,14 +37,10 @@ void sigchld_handler(int signo)
                 exit(EXIT_FAILURE);
             }
         }
-        child_count++;
+        atomic_fetch_add(&child_count, 1);
+        // child_count++;
     }
 
-    // if (child_count == 2)
-    // {
-    //     printf("All child processes have exited.\n");
-    //     // exit(0);
-    // }
 }
 
 void unlinkFifo(const char *fifo_name)
@@ -67,12 +65,14 @@ int main(int argc, char const *argv[])
 
     if (mkfifo(FIFO1, 0666) == -1 && errno != EEXIST)
     {
+        printf("Error while creating the fifo1\n");
         perror("mkfifo");
         exit(6);
     }
     // create fifos
     if (mkfifo(FIFO2, 0666) == -1 && errno != EEXIST)
     {
+        printf("Error while creating the fifo2\n");
         perror("mkfifo");
         exit(6);
     }
@@ -125,6 +125,7 @@ int main(int argc, char const *argv[])
             perror("read");
             exit(1);
         }
+        // printf("gelen:%ld\n", sizeof(arr2)* ArrLength);
         // close(fd);
         // printf"child2 multiply comutunu aldı\n");
         if (close(fd) == -1)
@@ -159,6 +160,7 @@ int main(int argc, char const *argv[])
             exit(4);
         }
         free(arr2);
+        free(arr);
         // printf("child1 End: %d\n", getpid());
         exit(0);
     }
@@ -187,7 +189,7 @@ int main(int argc, char const *argv[])
         }
         // printf("child2 sleeping...\n");
         sleep(10);
-        close(fd);
+        // close(fd);
         if (-1 == read(fd, arr2, sizeof(int) * ArrLength))
         {
             perror("read");
@@ -199,7 +201,7 @@ int main(int argc, char const *argv[])
         //     perror("open");
         //     exit(1);
         // }
-        if (-1 == read(fd, command, sizeof(char) * sizeof("multiply")))
+        if (-1 == read(fd, command, sizeof(char) * (sizeof("multiply") + 1)))
         {
             perror("read");
             exit(1);
@@ -250,6 +252,7 @@ int main(int argc, char const *argv[])
         printf("Result (sum + product): %d\n", result + sumFromChild1);
         free(arr2);
         free(command);
+        free(arr);
 
         // printf("child2 End: %d\n", getpid());
         exit(0); // Exit with product as status
@@ -263,6 +266,7 @@ int main(int argc, char const *argv[])
         perror("open");
         exit(2);
     }
+        // printf("giden:%ld\n", sizeof(arr)* ArrLength);
     // TODO arr'i child1 ve child2ye gönder
     if (-1 == write(fd1, arr, sizeof(int) * ArrLength))
     {

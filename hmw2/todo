@@ -11,7 +11,13 @@ aldığı integer ile malloc yapacaz
 tümm syscalllar if ile kontrol edilecek
 
 
-zombi kontrolü
 memory leak var mı rapor yazarken bakılacak
 makefile'da clean yapılacak
 
+
+zombi kontrolü
+
+
+hata:
+
+proceeding'i yazdırırken fazladan bir tane yazdırıyor
