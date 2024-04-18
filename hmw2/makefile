@@ -1,2 +1,2 @@
 all:
-	gcc main.c -o hmw
+	gcc -g main.c -o hmw

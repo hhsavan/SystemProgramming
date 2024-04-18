@@ -7,3 +7,11 @@ aldığı integer ile malloc yapacaz
 3- signal handling
 4- test
 5- rapor
+
+tümm syscalllar if ile kontrol edilecek
+
+
+zombi kontrolü
+memory leak var mı rapor yazarken bakılacak
+makefile'da clean yapılacak
+
