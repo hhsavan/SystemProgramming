@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.txt": "cmake",
+        "stat.h": "c",
+        "types.h": "c",
+        "string.h": "c"
+    }
+}
