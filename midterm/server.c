@@ -22,7 +22,7 @@ int handle_client(int client_num)
     snprintf(client_pid_str, sizeof(client_pid_str), "%d", getpid());
     char client_name[MAX_BUF_SIZE] = "client";
     strcat(client_name, client_pid_str);
-    printf(">> Client PID %d connected as \"%s\"\n", getpid(), client_name);
+    // printf(">> Client PID %d connected as \"%s\"\n", getpid(), client_name);
 
     int fd;
     if ((fd = open(clientFifo, O_WRONLY)) < 0)
@@ -113,7 +113,11 @@ int main(int argc, char *argv[])
     struct ConnectionReq cReq;
     printf(">> Server Started PID %d...\n", getpid());
     printf(">> Waiting for clients...\n");
-
+    if ((fd = open(SERVER_FIFO, O_RDONLY)) < 0)
+    {
+        perror("serverFifo open1");
+        exit(1);
+    }
     while (1)
     {
         // Check if a termination signal has been received
@@ -135,18 +139,16 @@ int main(int argc, char *argv[])
             wait(NULL);
             current_clients--;
         }
-
-        if ((fd = open(SERVER_FIFO, O_RDONLY)) < 0)
-        {
-            perror("serverFifo open1");
-            exit(1);
-        }
+        size_t readByte =read(fd, &cReq, sizeof(cReq)); 
         // Accept a new client connection
-        if (-1 == read(fd, &cReq, sizeof(cReq)))
+        if (-1 == (int)readByte)
         {
             perror("read");
             exit(1);
         }
+        else if (0 == (int)readByte)
+            continue;
+
         printf("gelen pid: %d", (int)cReq.pid);
         if (cReq.type != connect)
         {
@@ -194,9 +196,10 @@ int main(int argc, char *argv[])
             // snprintf(log_msg, sizeof(log_msg), "Client PID %d connected\n", pid);
             // write(log_fd, log_msg, strlen(log_msg));
         }
-        close(fd);
     }
 
+    close(fd);
+    unlink(SERVER_FIFO);
     free(clientFifo);
     return 0;
 }

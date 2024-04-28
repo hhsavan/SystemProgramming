@@ -7,6 +7,7 @@ void makeConnect()
 
     int fd = open(SERVER_FIFO, O_WRONLY);
     printf("0");
+    fflush(stdout);
     if (fd < 0)
     {
         perror("open");
@@ -24,7 +25,7 @@ void makeConnect()
         exit(3);
     }
     close(fd);
-    unlink(SERVER_FIFO);
+    // unlink(SERVER_FIFO);
 
     // cevap için şimdi clientFifoyu dinle (client fifo açılmış olmalı)
     // eğer cevap gelirse artık bu fifo üzerinden iletişim sağlanacak
@@ -47,7 +48,7 @@ void makeConnect()
         perror("open");
         exit(2);
     }
-
+    printf("waits in read\n");
     if (-1 == read(fd, &cReq, sizeof(cReq)))
     {
         perror("write");
