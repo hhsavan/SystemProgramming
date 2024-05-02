@@ -14,16 +14,21 @@
 
 
 
-#define MAX_CLIENTS 10
+#define MAX_CLIENTS 2
 #define MAX_BUF_SIZE 256
 #define SERVER_FIFO "serverFifo"
 char* clientFifo; // cl_pid >> cl_1256
+sig_atomic_t* childPids;   //clientlerle ilgilenen child processler
+sig_atomic_t* connectedPids;  //server'a bağlanan processler
+sig_atomic_t* connectedClientN;
 // #define CL_FIFO strcat(clgetpid());
 enum connectionStatus{
     connect,
     tryConnect,
     established,
-    notEstablished
+    notEstablished,
+    serverShutdown,
+    clientShutdown
 
 }connectionStatus;
 
@@ -38,9 +43,27 @@ struct Message{
     int length;
     pid_t sender;   //her aşamada bu kontrol edilecek. araya biri girmiş mi diye
 };
+typedef enum request_type {
+    LIST,
+    READF,
+    WRITET,
+    UPLOAD,
+    DOWNLOAD,
+    QUIT,
+    KILL
+}request_type;
+
+typedef struct Request {
+    request_type request;
+    char filename[256];
+    u_int64_t offset;
+    char string[4096];
+    char client_dir[256];
+
+} Request;
 
 typedef struct Message Message;
 typedef struct ConnectionReq ConnectionReq;
 
-
+void sendKillSig(pid_t pid);
 #endif

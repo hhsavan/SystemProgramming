@@ -1,0 +1,16 @@
+
+-server-client komut almıyor şuan child boşa düşüyor. bir senkronizasyon sıkıntısı var ama buna denk gelmek 
+lazım tam anlamıyla çözmek için. eğer buna denk gelirsem öncelik bu
+
+-multiple client durumunda clientların beklemesi
+
+
+-kill server ve quit işlemleri
+
+
+
+sonraya ertelenenler:
+    fifo adlarını değiştir
+    bir önceki çalıştırmadaki pid ile bağlandığında bağlanıyr bazen
+    fonksiyonlara ayırılacak
+    readf writef komutları falan...

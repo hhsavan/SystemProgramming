@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.txt": "cmake",
+        "fifo_seqnum.h": "c",
+        "types.h": "c"
+    }
+}

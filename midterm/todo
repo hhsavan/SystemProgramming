@@ -35,3 +35,5 @@ Daha sonraya bırakılan işler:
 
 makefile düzenlemeleri yapılacak
 fifoları unlink etmeyi unutma
+memory leak kontrol edilecek
+fifolar tmp folderının altında oluşturacak
