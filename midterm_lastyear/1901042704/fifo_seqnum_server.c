@@ -13,13 +13,18 @@
 #include "queue.h"
 
 #define MAX_CLIENTS 10
-pid_t childProcesses[MAX_CLIENTS]; // Array to store child process IDs
-int **connectedClientsArr;
+// pid_t childProcesses[MAX_CLIENTS]; // Array to store child process IDs
+
+// 0: clientpid | 1: childpid | 2: flag (1/0)
+int **connectedsArr;
 int connectedClients = 0; // Number of connected clients
 char logFileName[256];    // Log file name
 Queue waitingQueue;       // Queue to store waiting client requests
+int g_maxClients;
 
-void handleSignal(int signal)
+//bu parent process tarafından kontrol edilir.
+//parent process tüm clientleri kill yapar
+void KillServerSignal(int signal)
 {
     if (signal == SIGINT)
     {
@@ -28,11 +33,15 @@ void handleSignal(int signal)
 
         for (int i = 0; i < connectedClients; i++)
         {
-            kill(childProcesses[i], SIGINT);
+            //? Hepsine mmi kill göndermeli yoksa sadece [1] elemanı 1 olanlara mıı
+            kill(connectedsArr[i][0], SIGINT);    //client process
+            kill(connectedsArr[i][1], SIGINT);    //child process
+            // kill(childProcesses[i], SIGINT);
         }
 
         freeQueue(&waitingQueue);
-
+        for (int i = 0; i < g_maxClients; i++)
+            free(connectedsArr[i]);
         exit(EXIT_SUCCESS); // Terminate the server process
     }
 }
@@ -59,6 +68,10 @@ int parseComment(const char *input, char tokens[][MAX_WORD_SIZE])
     return tokenCount;
 }
 
+void HandleClient()
+{
+}
+
 int main(int argc, char const *argv[])
 {
     if (argc < 3)
@@ -69,25 +82,25 @@ int main(int argc, char const *argv[])
 
     const char *dirname = argv[1];
     int maxClients = atoi(argv[2]);
-
-    //çalışan clientları tutacağımız 2d array:
-    connectedClientsArr = (int **)malloc(sizeof(int *) * maxClients);
-    if (connectedClientsArr == NULL)
+    g_maxClients = maxClients;
+    // çalışan clientları tutacağımız 2d array:
+    connectedsArr = (int **)malloc(sizeof(int *) * maxClients);
+    if (connectedsArr == NULL)
     {
         printf("Memory allocation failed\n");
         return 1;
     }
     for (int i = 0; i < maxClients; i++)
     {
-        connectedClientsArr[i] = (int *)malloc(2 * sizeof(int));
-        if (connectedClientsArr[i] == NULL)
+        connectedsArr[i] = (int *)malloc(3 * sizeof(int));
+        if (connectedsArr[i] == NULL)
         {
             printf("Memory allocation failed\n");
             return 1;
         }
     }
-    
-    
+
+#pragma region fifoKurulumFalan
     /* Create server FIFO */
     umask(0);
     if (mkfifo(SERVER_FIFO, S_IRUSR | S_IWUSR | S_IWGRP) == -1 && errno != EEXIST)
@@ -140,10 +153,12 @@ int main(int argc, char const *argv[])
         fprintf(stderr, "Failed to open log file\n");
         exit(EXIT_FAILURE);
     }
-    // printf("log file oluşturuldu: %s\n", logFileName);
+// printf("log file oluşturuldu: %s\n", logFileName);
+#pragma endregion
 
+#pragma region signal
     struct sigaction sa;
-    sa.sa_handler = &handleSignal;
+    sa.sa_handler = &KillServerSignal;
     sigemptyset(&sa.sa_mask);
     sa.sa_flags = 0;
     if (sigaction(SIGINT, &sa, NULL) == -1)
@@ -151,6 +166,7 @@ int main(int argc, char const *argv[])
         fprintf(stderr, "Failed to set signal handler\n");
         exit(EXIT_FAILURE);
     }
+#pragma endregion
 
     /* Initialize the waiting queue */
     // beekleyyenler buraya atılacak
@@ -185,7 +201,7 @@ int main(int argc, char const *argv[])
             fprintf(stderr, "Failed to open client FIFO\n");
 
         // try connect ama server ful. bunu alan client çıkış yapacak
-        if (req.connectOption == TRY_CONNECT && connectedClients >= maxClients)
+        if (req.connectOption == TRY_CONNECT && connectedClients > maxClients)
         {
 
             struct response resp;
@@ -214,7 +230,7 @@ int main(int argc, char const *argv[])
         {
             // server dolu. client'w söylle beklesin
             //  gelen client bilgilerini queue ye ekle
-            if (connectedClients >= maxClients) // Server'da yer yok
+            if (connectedClients > maxClients) // Server'da yer yok
             {
 
                 enqueue(&waitingQueue, req.pid);
@@ -241,9 +257,10 @@ int main(int argc, char const *argv[])
 
                 dprintf(logFd, "Client connection attempt (PID: %d, server full)\n", req.pid);
             }
-            else // serverda yer var.
+            else //! serverda yer var. bağlantı sağlandı. connectedArra ekle
             {
-
+                connectedsArr[connectedClients][0] = req.pid;
+                connectedsArr[connectedClients][2] = 1;   //1 olması sistemde çalıştığını gösterir
                 /* Fork a child process */
                 pid_t childPid = fork();
 
@@ -254,7 +271,11 @@ int main(int argc, char const *argv[])
                 }
                 else if (childPid == 0) // child process
                 {
-
+                    
+                    //TODO SEMAPHORE LAZIM
+                    connectedsArr[connectedClients][1] = getpid(); //clienti de ekle
+                    // connectedClients++;
+                    //TODO SEMAPHORE END
                     while (1)
                     {
 
@@ -266,7 +287,7 @@ int main(int argc, char const *argv[])
                             fprintf(stderr, "Failed to open request client FIFO\n");
                             continue;
                         }
-
+                        // client'a atanmış child process burda yeni komut gelmesini bekler
                         if (read(reqClientFd, &req, sizeof(struct request)) != sizeof(struct request))
                         {
                             fprintf(stderr, "Error reading request(comment); discarding\n");
@@ -281,7 +302,7 @@ int main(int argc, char const *argv[])
 
                         tokenCount = parseComment(req.comment, tokens); // parse command
 
-#pragma region parse comments
+#pragma region parse commands
                         if (strcmp(tokens[0], "help") == 0)
                         {
                             if (strcmp(tokens[1], "readF") == 0)
@@ -402,13 +423,13 @@ int main(int argc, char const *argv[])
                         if (strcmp(tokens[0], "killServer") == 0)
                         {
                             strcpy(resp.commentResult, "\nbye");
-                            printf("kill signal from client (%ld).. terminating..\n", (long)getpid());
-                            printf("bye");
-                            if (kill(childPid, SIGINT) == -1)
-                            {
-                                perror("Failed to send SIGINT signal");
-                                return 1;
-                            }
+                            printf("kill signal from client (%ld).. \nterminating..\n", (long)req.pid);
+                            // printf("bye");
+                            // if (kill(getpid(), SIGINT) == -1)
+                            // {
+                            //     perror("Failed to send SIGINT signal");
+                            //     return 1;
+                            // }
                             if (kill(getppid(), SIGINT) == -1)
                             {
                                 perror("Failed to send SIGINT signal to Server");
@@ -488,8 +509,12 @@ int main(int argc, char const *argv[])
 #pragma endregion
 
                     //! HATA enque yaparkan
-                    enqueue(&childProcesses, childPid);
+                    // enqueue(&childProcesses, childPid);
+
+                    //? SEMAPHORE LAZIM 
+                    // connectedsArr[connectedClients][1] = getpid(); //clienti de ekle
                     connectedClients++;
+                    //TODO SEMAPHORE END
 
                     printf("Client PID %ld connected as "
                            "client%d"
@@ -501,6 +526,7 @@ int main(int argc, char const *argv[])
                 }
             }
         }
+
         else
         {
             fprintf(stderr, "Invalid request received\n");
@@ -508,8 +534,8 @@ int main(int argc, char const *argv[])
     }
 
     freeQueue(&waitingQueue);
-    for(int i=0; i<maxClients; i++)
-        free(connectedClientsArr[i]);
+    for (int i = 0; i < maxClients; i++)
+        free(connectedsArr[i]);
     return 0;
 }
 void printReq(const struct request *str)

@@ -30,6 +30,8 @@ sem_t *sem;
 // 	serverIsFull_wait,	//server is full
 // 	connected
 // };
+
+// struct ClientInfo *connectedClients;
 struct request { 
 	pid_t pid;   
 	int connectOption; 
@@ -45,6 +47,11 @@ struct response {
 	char commentResult[500];
 };
 
+struct ClientInfo {
+    int clientpid;   // Client PID
+    int childpid;    // Child PID
+    int flag;        // Flag: 1 means working, 0 means not working
+};
 
 void printReq(const struct request* str);
 void printRes(const struct response* str);
