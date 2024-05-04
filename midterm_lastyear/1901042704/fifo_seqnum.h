@@ -14,9 +14,11 @@ sem_t *sem;
 
 #define FAILURE 0
 #define SUCCESS 1
+#define DISCONNECT 2
+#define WAIT 3
 
 # define MAX_TOKENS 4
-# define MAX_WORD_SIZE 100
+# define MAX_WORD_SIZE 250
 
 #define SERVER_FIFO "/tmp/seqnum_sv"
 
@@ -52,9 +54,10 @@ struct ClientInfo {
     int childpid;    // Child PID
     int flag;        // Flag: 1 means working, 0 means not working
 };
-
+void closew(int fd);
 void printReq(const struct request* str);
 void printRes(const struct response* str);
-
+void sendRequst(const char* fifo, const struct request* req);
+void sendThatConnectionEstablishedtoClient(const char* clientFifo);
 
 // #endif

@@ -1,0 +1,7 @@
+Client connected (PID: 20992)
+Client connection attempt (PID: 20996, server full)
+Client20992 disconnected (PID: 20993)
+Client connected (PID: 21421)
+Client21421 disconnected (PID: 21422)
+Client connected (PID: 21685)
+Client21685 disconnected (PID: 21686)

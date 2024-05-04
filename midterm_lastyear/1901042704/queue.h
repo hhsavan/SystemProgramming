@@ -60,7 +60,8 @@ pid_t dequeue(Queue *queue)
     if (isQueueEmpty(queue))
     {
         fprintf(stderr, "Cannot dequeue from an empty queue\n");
-        exit(EXIT_FAILURE);
+        return -1;  //means queue is empty
+        // exit(EXIT_FAILURE);
     }
 
     pid_t client = queue->data[queue->front];

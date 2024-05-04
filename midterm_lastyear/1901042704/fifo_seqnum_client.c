@@ -20,7 +20,7 @@ void handleSignal(int signal)
     }
 }
 
-//bu quitten gelen için kullanılabilir
+// bu quitten gelen için kullanılabilir
 void handleSigUSR1(int signal)
 {
     if (signal == SIGINT)
@@ -94,7 +94,8 @@ int main(int argc, char const *argv[])
         fprintf(stderr, "Failed to send request to the server\n");
         exit(EXIT_FAILURE);
     }
-
+    printf("burda1\n");
+    fflush(stdout);
     /* Open client FIFO for getting response */
     int clientFd = open(clientFifo, O_RDONLY);
     if (clientFd == -1)
@@ -102,19 +103,30 @@ int main(int argc, char const *argv[])
         fprintf(stderr, "Failed to open client FIFO\n");
         exit(EXIT_FAILURE);
     }
+    char comment[MAX_WORD_SIZE];
+    printf("burda2\n");
+    fflush(stdout);
 
     while (1)
     {
         /* Receive response from the server */
         struct response resp;
-        if (read(clientFd, &resp, sizeof(struct response)) != sizeof(struct response))
+        // printf("waiting for server response\n");
+        fflush(stdout);
+        int numOfRead = read(clientFd, &resp, sizeof(struct response));
+        if (numOfRead == -1)
         {
             fprintf(stderr, "Failed to receive response from the server.\n");
             exit(EXIT_FAILURE);
         }
-
-        printf("server connection: %d", resp.serverConnection);
-        printf("server pid: %d", resp.serverPid);
+        // else if (numOfRead == 0){
+        //     sleep(0.5);
+        //     continue;
+        // }
+        // iff()
+        printf("server connection: %d\n", resp.serverConnection);
+        printf("server pid: %d\n", resp.serverPid);
+        printf("comment: %s\n", resp.commentResult);
         fflush(stdout);
 
         if (resp.serverPid != cmdServerPid)
@@ -122,19 +134,27 @@ int main(int argc, char const *argv[])
             fprintf(stderr, "Wrong server PID. Failed to connect to server.\n");
             break;
         }
-
+        //! WAIT Kısmı
+        // // if (resp.serverConnection == WAIT)
+        // // {
+        // //     // printf("waiting for server to give seat...\n");
+        // //     numOfRead = read(clientFd, &resp, sizeof(struct response));
+        // //     if (numOfRead == -1)
+        // //     {
+        // //         fprintf(stderr, "Failed to receive response from the server.\n");
+        // //         exit(EXIT_FAILURE);
+        // //     }
+        // // }
         if (resp.serverConnection == FAILURE && cmdConnectOption == TRY_CONNECT)
         {
             printf("Connection NOT established.\n");
             // clientFifo and reqFIFO remove and unlink yap
             // exit(EXIT_SUCCESS);
         }
-        if (resp.serverConnection == SUCCESS)
+        else if (resp.serverConnection == SUCCESS)
         {
             while (1)
             {
-
-                char comment[MAX_WORD_SIZE];
 
                 printf("\nEnter command: \n");
 
@@ -145,7 +165,7 @@ int main(int argc, char const *argv[])
                 req.connectOption = cmdConnectOption;
                 req.seqLen = 0;
                 strcpy(req.comment, comment);
-                printf("Request: %s\n", req.comment);
+                // printf("Request: %s\n", req.comment);
 
                 int reqClientFd = open(reqClientFifo, O_WRONLY);
                 if (reqClientFd == -1)
@@ -160,7 +180,7 @@ int main(int argc, char const *argv[])
                     exit(EXIT_FAILURE);
                 }
 
-                clientFd = open(clientFifo, O_RDONLY);
+                // clientFd = open(clientFifo, O_RDONLY);
 
                 /* Receive response from the server */
                 struct response resp;
@@ -175,6 +195,10 @@ int main(int argc, char const *argv[])
                 printf("%s\n", resp.commentResult);
             }
         }
+        // else
+        // {
+        //     printf("An error occured...\n");
+        // }
     }
 
     close(clientFd);

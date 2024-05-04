@@ -1,26 +1,29 @@
-    connectedsArr shared memorye konulacak 
-    shared memory kısmına semaphore konulacak
-    killServer yapıldığında tüm herkes kill yapılacak
-
-    bir client quit yapılınca onun çıktığı yere waitingQueuden atama yapılacak
-        waitingqueue >> connectedsArr
-        bu atama fork yapılarak handleClient fonksiyonu içine gönderilecek. burda while içinde çalışacak
-
-        inşallah
 
 
+    waitingQueue:
+
+        
+
+
+
+yapıldı:
+    killServer  >> waitingquede bekleyenlere de kill atılacak  
+
+
+önemli yapılacak:
 -server-client komut almıyor şuan child boşa düşüyor. bir senkronizasyon sıkıntısı var ama buna denk gelmek 
 lazım tam anlamıyla çözmek için. eğer buna denk gelirsem öncelik bu
 
--multiple client durumunda clientların beklemesi
-
-
--kill server ve quit işlemleri
-
+- killServer komutunda signal ile kill yaparken recursion oluşmaması için sigint handler içinde sigterminal
+fonksiyonu ile kill edilecek
 
 
 sonraya ertelenenler:
-    fifo adlarını değiştir
+
+   fifo adlarını değiştir
+
     bir önceki çalıştırmadaki pid ile bağlandığında bağlanıyr bazen
     fonksiyonlara ayırılacak
     readf writef komutları falan...
+    waitingquede bekleyenlere de kill atılacak
+    komut olarak dummy bişey yazınca bir önceki komutun sonucunu yazdırıyor
