@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#define COMING_CAR_NUM 5
+#define COMING_CAR_NUM 50
 #define MAX_AUTOMOBILES 8
 #define MAX_PICKUPS 4
 #define TEMP_AUTOMOBILE_SPACES 8 // bekleme yeri
@@ -41,7 +41,7 @@ int car()
 void *carOwner()
 {
     //
-    sleep(rand() % 3);
+    // sleep(rand() % 3);
 
     int carType = car();
 
@@ -57,11 +57,12 @@ void *carOwner()
             sem_post(&sem_mFree_automobile);
             return NULL;
         }
-
-        printf("Car owner(Automobile): Now I am waiting in temporary parking lot...\n");
-        fflush(stdout);
-        // içeride yer var temp
+        mFree_automobile--;
         sem_post(&sem_mFree_automobile);
+        // printf("Car owner(Automobile): Now I am waiting in temporary parking lot...\n");
+        // fflush(stdout);
+        // içeride yer var temp
+        // sem_post(&sem_mFree_automobile);
 
         // valenin bunu almasını bekliyor. vale her seferinde bir tane alır. hangisini alırsa artık
         sem_post(&inChargeforAutomobile);
@@ -72,16 +73,19 @@ void *carOwner()
     else if (carType == PICKUP)
     {
         // buraya da sem lazım mı?
+        // sem_wait(&sem_mFree_pickup);
         sem_wait(&sem_mFree_pickup);
         if (mFree_pickup == 0)
         { // Check if automobile space available
             printf("Car owner(pickup): No temporary parking space for my pickup, leaving...\n");
             fflush(stdout);
+            sem_post(&sem_mFree_pickup);
             return NULL;
         }
+        mFree_pickup--;
         sem_post(&sem_mFree_pickup);
-        printf("Car owner(pickup): Now I am waiting in temporary parking lot...\n");
-        fflush(stdout);
+        // printf("Car owner(pickup): Now I am waiting in temporary parking lot...\n");
+        // fflush(stdout);
         // içeride yer var temp
         // yeni arabba geldiği bildirilir:
 
@@ -118,11 +122,12 @@ void *carAttendent(void *type)
             else
             {
                 sem_wait(&sem_mFree_automobile);
-                mFree_automobile--;
+                mFree_automobile++;
                 sem_post(&sem_mFree_automobile);
-                printf("Car Valet(Automobile): I will park this car now\n");
-                // sleep(1);
-                printf("Car Valet(Automobile): An automobile is parked. I will take care of it.\n");
+                printf("Car Valet(Automobile): I will park a car now\n");
+                fflush(stdout);
+                sleep(1);
+                printf("Car Valet(Automobile): An automobile is parked\n");
                 fflush(stdout);
             }
         }
@@ -134,19 +139,19 @@ void *carAttendent(void *type)
 
             if (sem_wait(&pickupsayisi) == -1)
             {
-                printf("Car owner(pickup): No parking space inside, leaving...\n");
+                printf("Car Valet(pickup): No parking space inside!\n");
                 fflush(stdout);
-
             }
             else
             {
 
                 sem_wait(&sem_mFree_pickup);
-                mFree_pickup--;
+                mFree_pickup++;
                 sem_post(&sem_mFree_pickup);
-                printf("Valet(pickup): I will park this car now\n");
-                // sleep(1.5);
-                printf("Valet(pickup): An pickup is parked. I will take care of it.\n");
+                printf("Car Valet(pickup): I will park this car now\n");
+                fflush(stdout);
+                sleep(1);
+                printf("Car Valet(pickup): An pickup is parked.\n");
                 fflush(stdout);
             }
         }
