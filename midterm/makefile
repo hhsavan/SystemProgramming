@@ -1,10 +1,18 @@
-#all:
-#	gcc -g *.c -o hmw
-server:
-	gcc server.c src/*.c -o server 
+CC=gcc
+CFLAGS=
 
-client:
-	gcc client.c src/*.c -o client
+# Header file
+INCLUDES = helper.h
+
+all: server client
+
+server: server.c $(INCLUDES)
+	$(CC) $(CFLAGS) -g -o neHosServer server.c
+
+client: client.c $(INCLUDES)
+	$(CC) $(CFLAGS) -o neHosClient client.c
+
+.PHONY: clean
 
 clean:
-	rm -rf hmw *.o
+	rm -f neHosServer neHosClient

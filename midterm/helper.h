@@ -8,7 +8,7 @@
 #include <fcntl.h>
 
 #define SEMAPHORE_NAME "/seqnum_semaphore"
-sem_t *sem; 
+// sem_t *sem; 
 #define TRY_CONNECT 0
 #define CONNECT 1
 
@@ -20,11 +20,11 @@ sem_t *sem;
 # define MAX_TOKENS 4
 # define MAX_WORD_SIZE 250
 
-#define SERVER_FIFO "/tmp/seqnum_sv"
+#define SERVER_FIFO "/tmp/serverFifo"
 
-#define CLIENT_FIFO_TEMPLATE "/tmp/seqnum_cl.%ld"
+#define CLIENT_FIFO_TEMPLATE "/tmp/cl_%ld"
 
-#define REQUEST_CLIENT_FIFO_TEMPLATE "/tmp/seqnum_cl_req.%ld"
+#define REQUEST_CLIENT_FIFO_TEMPLATE "/tmp/cl_req_%ld"
 
 #define CLIENT_FIFO_NAME_LEN (sizeof(CLIENT_FIFO_TEMPLATE) + 20)
 // enum ConnectionStatus{
@@ -38,7 +38,7 @@ struct request {
 	pid_t pid;   
 	int connectOption; 
 	int seqLen;  
-	char comment[500]; 
+	char comment[10000]; 
 };
 
 struct response { 
@@ -46,7 +46,7 @@ struct response {
 	int serverConnection;
 	// enum ConnectionStatus serverConnection;
 	int serverPid; 
-	char commentResult[500];
+	char commentResult[10000];
 };
 
 struct ClientInfo {
@@ -59,5 +59,5 @@ void printReq(const struct request* str);
 void printRes(const struct response* str);
 void sendRequst(const char* fifo, const struct request* req);
 void sendThatConnectionEstablishedtoClient(const char* clientFifo);
-
+char* get_line(FILE* fp, int line_num);
 // #endif
