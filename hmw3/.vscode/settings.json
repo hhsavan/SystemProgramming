@@ -6,6 +6,8 @@
         "time.h": "c",
         "stdlib.h": "c",
         "stdio.h": "c",
-        "semaphore.h": "c"
+        "semaphore.h": "c",
+        "compare": "c",
+        "type_traits": "c"
     }
 }

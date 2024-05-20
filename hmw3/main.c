@@ -1,97 +1,248 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
+#include <time.h>
 #include <semaphore.h>
+#include <unistd.h>
+#include <errno.h>
 
-#define MAX_AUTOMOBILES 8
-#define MAX_PICKUPS 4
+#define COMING_CAR_NUM 6
+// #define COMING_Pickup_NUM 20
+#define TEMP_AUTOMOBILE_SPACES 4 // bekleme yeri
+#define TEMP_PICKUP_SPACES 1     // bekleme yeri
 
-// Semaphore declarations
-sem_t newPickup, inChargeforPickup, newAutomobile, inChargeforAutomobile;
+#define AUTOMOBILE_VALE 1
+#define PICKUP_VALE 0
+#define AUTOMOBILE 1
+#define PICKUP 0
 
-// Counter variables to track available temporary parking spaces
-int mFree_automobile = MAX_AUTOMOBILES;
-int mFree_pickup = MAX_PICKUPS;
+int mFree_automobile = TEMP_AUTOMOBILE_SPACES;
+int mFree_pickup = TEMP_PICKUP_SPACES;
+// critical variables
 
-// Function prototypes
-void *carOwner(void *arg);
-void *carAttendant(void *arg);
+// sem_t newPickup, inChargeforPickup;         // Semaphores for pickups
+// sem_t newAutomobile, inChargeforAutomobile; // Semaphores for automobiles
+sem_t newPickup, inChargeforPickup;         // Semaphores for pickups
+sem_t newAutomobile, inChargeforAutomobile; // Semaphores for automobiles
 
-int main() {
-    // Initialize semaphores
-    sem_init(&newPickup, 0, 0);
-    sem_init(&inChargeforPickup, 0, 1);
-    sem_init(&newAutomobile, 0, 0);
-    sem_init(&inChargeforAutomobile, 0, 1);
+sem_t sem_mFree_automobile;
+sem_t sem_mFree_pickup;
+sem_t sem_mFree;
+size_t currentNum;
+// sıfır veya 1 dönderirç
+//  0: pickup, 1:automobile
+int car()
+{
+    return rand() % 2;
+}
+void *carOwner(void *num)
+{
+    //
+    // sleep(rand() % 3);
+    int ownerType = *((int *)num);
 
-    // Create threads for carOwner and carAttendant
-    pthread_t ownerThread, attendantThread;
-    pthread_create(&ownerThread, NULL, carOwner, NULL);
-    pthread_create(&attendantThread, NULL, carAttendant, NULL);
+    if (ownerType == AUTOMOBILE)
+    {
+        while (1)
+        {
 
-    // Join threads
-    pthread_join(ownerThread, NULL);
-    pthread_join(attendantThread, NULL);
+            // sem_wait(&newAutomobile);
 
-    // Destroy semaphores
-    sem_destroy(&newPickup);
-    sem_destroy(&inChargeforPickup);
-    sem_destroy(&newAutomobile);
-    sem_destroy(&inChargeforAutomobile);
+            if (sem_trywait(&newAutomobile) == -1)
+            {
+                if (currentNum == COMING_CAR_NUM)
+                    break;
+                continue;
+            }
+            sem_wait(&sem_mFree);
 
-    return 0;
+            if (mFree_automobile == 0)
+            { // Check if automobile space available
+                printf("Owner(Automobile): No temporary parking space for my automobile, leaving...\n");
+                fflush(stdout);
+                sem_post(&sem_mFree);
+                // sem_post(&newAutomobile);
+                // return NULL;
+                continue;
+            }
+            mFree_automobile--;
+            sem_post(&sem_mFree);
+
+            sem_post(&inChargeforAutomobile);
+            printf("Owner(Automobile): My automobile is here. Take care of my car...\n");
+            fflush(stdout);
+        }
+    }
+    else
+    {
+        while (1)
+        {
+            // sem_wait(&newPickup);
+            if (sem_trywait(&newPickup) == -1)
+            {
+                if (currentNum == COMING_CAR_NUM)
+                    break;
+                continue;
+            }
+            sem_wait(&sem_mFree);
+
+            if (mFree_pickup == 0)
+            { // Check if Pickup space available
+                printf("Owner(Pickup): No temporary parking space for my Pickup, leaving...\n");
+                fflush(stdout);
+                sem_post(&sem_mFree);
+                // sem_post(&newPickup);
+                // return NULL;
+                // continue;
+            }
+            else
+            {
+                mFree_pickup--;
+                sem_post(&sem_mFree);
+
+                sem_post(&inChargeforPickup);
+                printf("Owner(Pickup): My Pickup is here. Take care of my car...\n");
+                fflush(stdout);
+            }
+        }
+    }
+    return NULL;
 }
 
-// Car owner thread function
-void *carOwner(void *arg) {
-    while (1) {
-        // Simulate arrival of a vehicle (1 for automobile, 2 for pickup)
-        int vehicleType = rand() % 2 + 1;
+void *carAttendent(void *type)
+{
+    int vale = *((int *)type);
+    int l_trycount = 0;
+    while (1)
+    {
+        if (vale == AUTOMOBILE_VALE)
+        {
+            // Wait for an automobile to park
+            // sem_wait(&inChargeforAutomobile);
 
-        // Check if there is space available in the temporary parking lot
-        if (vehicleType == 1 && mFree_automobile > 0) {
-            sem_wait(&inChargeforAutomobile); // Lock access to mFree_automobile
-            mFree_automobile--; // Decrement available automobile spaces
-            sem_post(&newAutomobile); // Signal the attendant about the new automobile
-            sem_post(&inChargeforAutomobile); // Release access to mFree_automobile
-            printf("Owner: Automobile arrived\n");
-        } else if (vehicleType == 2 && mFree_pickup > 0) {
-            sem_wait(&inChargeforPickup); // Lock access to mFree_pickup
-            mFree_pickup--; // Decrement available pickup spaces
-            sem_post(&newPickup); // Signal the attendant about the new pickup
-            sem_post(&inChargeforPickup); // Release access to mFree_pickup
-            printf("Owner: Pickup arrived\n");
-        } else {
-            printf("Owner: No space available, exiting.\n");
+            if (sem_trywait(&inChargeforAutomobile) == -1)
+            {
+                if (currentNum == COMING_CAR_NUM && mFree_automobile == TEMP_AUTOMOBILE_SPACES)
+                    break;
+                continue;
+            }
+
+            sem_wait(&sem_mFree);
+            mFree_automobile++;
+            printf("Valet(Automobile): I will park an automobile now\n");
+            fflush(stdout);
+            sem_post(&sem_mFree);
+            sleep(3);
+            printf("# An automobile is parked\n");
+            fflush(stdout);
         }
+        else if (vale == PICKUP_VALE)
+        {
 
-        // Simulate time between vehicle arrivals
+            // Wait for an automobile to park
+            // sem_wait(&inChargeforPickup);
+            if (sem_trywait(&inChargeforPickup) == -1)
+            {
+                if (currentNum == COMING_CAR_NUM && mFree_pickup == TEMP_PICKUP_SPACES)
+                    break;
+                continue;
+            }
+            sem_wait(&sem_mFree);
+            mFree_pickup++;
+            printf("Valet(pickup): I will park this pickup now\n");
+            fflush(stdout);
+            sem_post(&sem_mFree);
+            sleep(3);
+            printf("# A pickup is parked.\n");
+            fflush(stdout);
+        }
+        else
+        {
+            perror("Error Vale Type\n");
+            return NULL;
+        }
+    }
+
+    return NULL;
+}
+
+int main()
+{
+    srand(time(NULL));
+
+    pthread_t vale1, vale2, carOwner1, carOwner2;
+    int valeA = AUTOMOBILE_VALE;
+    int valeP = PICKUP_VALE;
+
+#pragma region sem_inits
+    sem_init(&newPickup, 0, 0);
+    sem_init(&inChargeforPickup, 0, 0);
+    sem_init(&newAutomobile, 0, 0);
+    sem_init(&inChargeforAutomobile, 0, 0); // 0-1 mutex gibi çalışır
+    sem_init(&sem_mFree, 0, 1);
+#pragma endregion
+#pragma region creates
+    if (pthread_create(&vale1, NULL, carAttendent, &valeA) != 0)
+    {
+        perror("pthread_create-ValeAutomobile");
+        exit(1);
+    }
+
+    if (pthread_create(&vale2, NULL, carAttendent, &valeP) != 0)
+    {
+        perror("pthread_create-ValePickup");
+        exit(1);
+    }
+
+    if (pthread_create(&carOwner1, NULL, carOwner, &valeA) != 0)
+    {
+        perror("pthread_create-Car");
+        exit(1);
+    }
+    if (pthread_create(&carOwner2, NULL, carOwner, &valeP) != 0)
+    {
+        perror("pthread_create-Car");
+        exit(1);
+    }
+
+    for (currentNum = 0; currentNum < COMING_CAR_NUM; currentNum++)
+    {
+        int carType = car();
+        if (carType == AUTOMOBILE)
+        {
+            sem_post(&newAutomobile);
+        }
+        else
+        {
+            sem_post(&newPickup);
+        }
         sleep(1);
     }
-    return NULL;
-}
-
-// Car attendant thread function
-void *carAttendant(void *arg) {
-    while (1) {
-        // Wait for a new automobile to arrive
-        sem_wait(&newAutomobile);
-        printf("Attendant: Automobile parked\n");
-        // Simulate parking process
-        sleep(2);
-        // Increment available automobile spaces
-        sem_wait(&inChargeforAutomobile); // Lock access to mFree_automobile
-        mFree_automobile++;
-        sem_post(&inChargeforAutomobile); // Release access to mFree_automobile
-
-        // Wait for a new pickup to arrive
-        sem_wait(&newPickup);
-        printf("Attendant: Pickup parked\n");
-        // Simulate parking process
-        sleep(2);
-        // Increment available pickup spaces
-        sem_wait(&inChargeforPickup); // Lock access to mFree_pickup
-        mFree_pickup++;
-        sem_post(&inChargeforPickup); // Release access to mFree_pickup
+#pragma endregion
+#pragma region joins
+    if (pthread_join(vale1, NULL) != 0)
+    {
+        perror("pthread_join_vale1");
+        exit(1);
     }
-    return NULL;
+
+    if (pthread_join(vale2, NULL) != 0)
+    {
+        perror("pthread_join_vale1");
+        exit(1);
+    }
+
+    if (pthread_join(carOwner1, NULL) != 0)
+    {
+        perror("pthread_join_vale1");
+        exit(1);
+    }
+    if (pthread_join(carOwner2, NULL) != 0)
+    {
+        perror("pthread_join_vale1");
+        exit(1);
+    }
+#pragma endregion
+
+    return 0;
 }

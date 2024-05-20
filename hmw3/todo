@@ -1,5 +1,42 @@
 
 
+
+
+araba ve pickup için 2 tane thread olacak
+
+ana park yerinde sonsuz yer
+
+temp parka her seferinde bir tane araba girebilir
+
+semaphore removelama (sem_destroy)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+gereksizler variableler silinecek
+variable isimleri değiştirilecek
+gönderilen arabalar bittiğinde programın sonlanması
+valgring ile memory leak check edilecek
+makefile
+rapor
+
 program sonlanmalı mı
 rapor
 makefile
