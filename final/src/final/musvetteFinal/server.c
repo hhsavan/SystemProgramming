@@ -41,13 +41,16 @@ void printOrder(const Order *order) {
     }
 }
 
-pthread_mutex_t orders_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t print_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t meals_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t oven_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t delivery_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cook_cond = PTHREAD_COND_INITIALIZER;
 pthread_cond_t delivery_cond = PTHREAD_COND_INITIALIZER;
 sem_t meal_semaphore;
 sem_t oven_semaphore;
 Queue *meals_queue;
+Queue *delivery_queue;
 LinkedList *oven_list;
 
 void* phonethreadfunc(void* arg) {
@@ -114,19 +117,16 @@ void* phonethreadfunc(void* arg) {
             total_received += received;
         }
 
-        printOrder(new_order); // Print the received order
+        // printOrder(new_order); // Print the received order
 
         // Enqueue each meal to the meals queue
-        pthread_mutex_lock(&orders_mutex);
+        pthread_mutex_lock(&meals_mutex);
         for (int i = 0; i < new_order->numberOfMeals; i++) {
             enqueue(meals_queue, &new_order->meals[i]);
-        }
-        printf("Meals received and added to queue\n");
-        pthread_mutex_unlock(&orders_mutex);
-
-        for (int i = 0; i < new_order->numberOfMeals; i++) {
             sem_post(&meal_semaphore);
         }
+        printf("Meals received and added to queue\n");
+        pthread_mutex_unlock(&meals_mutex);
 
         free(new_order); // Free the order struct, but not the meals, as they are in the queue
         close(new_socket);
@@ -137,22 +137,25 @@ void* cookThreadFunc(void* arg) {
     while (1) {
         sem_wait(&meal_semaphore);
 
-        pthread_mutex_lock(&orders_mutex);
+        pthread_mutex_lock(&meals_mutex);
         Meal *meal = (Meal *)dequeue(meals_queue);
-        pthread_mutex_unlock(&orders_mutex);
+        pthread_mutex_unlock(&meals_mutex);
 
         if (meal == NULL) {
             continue;
         }
 
         // Simulate meal preparation time
+        pthread_mutex_lock(&print_mutex);
         printf("Cook preparing meal %d for order %d\n", meal->mealId, meal->orderPid);
+        pthread_mutex_ulock(&print_mutex);
         sleep(1); // Simulate time
 
         sem_wait(&oven_semaphore);
 
         pthread_mutex_lock(&oven_mutex);
         // Simulate putting meal in oven
+        pthread_mutex_lock(&print_mutex);
         printf("Cook putting meal %d for order %d in oven\n", meal->mealId, meal->orderPid);
         insertAtEnd(oven_list, meal);
         sleep(1); // Simulate time
@@ -170,30 +173,34 @@ void* cookThreadFunc(void* arg) {
         deleteNode(oven_list, meal);
         pthread_mutex_unlock(&oven_mutex);
 
-        // Notify manager
-        printf("Cook finished meal %d for order %d\n", meal->mealId, meal->orderPid);
+        // Enqueue meal to the delivery queue
+        pthread_mutex_lock(&delivery_mutex);
+        enqueue(delivery_queue, meal);
         pthread_cond_signal(&delivery_cond);
+        pthread_mutex_unlock(&delivery_mutex);
+
+        printf("Cook finished meal %d for order %d\n", meal->mealId, meal->orderPid);
     }
 }
 
 void* managerThreadFunc(void* arg) {
     while (1) {
-        pthread_mutex_lock(&orders_mutex);
+        pthread_mutex_lock(&meals_mutex);
         while (isQueueEmpty(meals_queue)) {
-            pthread_cond_wait(&cook_cond, &orders_mutex);
+            pthread_cond_wait(&cook_cond, &meals_mutex);
         }
-        pthread_mutex_unlock(&orders_mutex);
+        pthread_mutex_unlock(&meals_mutex);
     }
 }
 
 void* deliveryThreadFunc(void* arg) {
     while (1) {
-        pthread_mutex_lock(&orders_mutex);
-        while (isQueueEmpty(meals_queue)) {
-            pthread_cond_wait(&delivery_cond, &orders_mutex);
+        pthread_mutex_lock(&delivery_mutex);
+        while (isQueueEmpty(delivery_queue)) {
+            pthread_cond_wait(&delivery_cond, &delivery_mutex);
         }
-        Meal *meal = (Meal *)dequeue(meals_queue);
-        pthread_mutex_unlock(&orders_mutex);
+        Meal *meal = (Meal *)dequeue(delivery_queue);
+        pthread_mutex_unlock(&delivery_mutex);
 
         if (meal == NULL) {
             continue;
@@ -222,6 +229,7 @@ int main(int argc, char *argv[]) {
     sem_init(&oven_semaphore, 0, 6);
 
     meals_queue = createQueue();
+    delivery_queue = createQueue();
     oven_list = createLinkedList();
 
     pthread_create(&phone_thread, NULL, phonethreadfunc, &portnumber);
@@ -248,12 +256,14 @@ int main(int argc, char *argv[]) {
 
     sem_destroy(&meal_semaphore);
     sem_destroy(&oven_semaphore);
-    pthread_mutex_destroy(&orders_mutex);
+    pthread_mutex_destroy(&meals_mutex);
     pthread_mutex_destroy(&oven_mutex);
+    pthread_mutex_destroy(&delivery_mutex);
     pthread_cond_destroy(&cook_cond);
     pthread_cond_destroy(&delivery_cond);
 
     freeQueue(meals_queue);
+    freeQueue(delivery_queue);
     freeLinkedList(oven_list);
 
     return 0;
