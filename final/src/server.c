@@ -4,134 +4,223 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <pthread.h>
-#include <time.h>
-#include "../include/queue.h"   
 
-#define PORT 8080
-#define MAX_CLIENTS 10
+#define MAX_COOKS 10
+#define MAX_DELIVERIES 10
+#define MAX_OVEN_CAPACITY 6
+#define MAX_DELIVERY_BAG_CAPACITY 3
+#define ORDER_SIZE 10
 
-// Queue to store orders
-struct OrderQueue order_queue;
-pthread_mutex_t queue_mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t queue_cond = PTHREAD_COND_INITIALIZER;
+typedef enum {
+    NOT_PLACED,
+    PLACED,
+    PREPARING,
+    PREPARED,
+    IN_OVEN,
+    COOKED,
+    READY_FOR_DELIVERY,
+    OUT_FOR_DELIVERY,
+    DELIVERED,
+    CANCEL,
+    ALL_SERVED
+} OrderStatus;
 
-// Array to store client sockets
-int client_sockets[MAX_CLIENTS];
-int client_count = 0;
-pthread_mutex_t client_mutex = PTHREAD_MUTEX_INITIALIZER;
+typedef struct {
+    OrderStatus status;
+    int orderPid;
+    int mealId;
+    double x;           /* Coordinates of the client */
+    double y;
+} Meal;
 
-void *client_handler(void *socket_desc) {
-    int sock = *(int*)socket_desc;
-    struct Order order;
-    struct Response response;
+typedef struct {
+    Meal meals[ORDER_SIZE];
+    OrderStatus status;
+    pid_t pid;
+    int id; // Unique identifier for the order
+    double townWidth;
+    double townHeight;
+    int numberOfMeals;
+    int clientSocket;
+} Order;
 
-    // Receive the struct from the client
-    read(sock, &order, sizeof(order));
+void print_order(const Order *order) {
+    printf("Order ID: %d\n", order->id);
+    printf("Order PID: %d\n", order->pid);
+    printf("Town Size: %.2f x %.2f\n", order->townWidth, order->townHeight);
+    printf("Number of Meals: %d\n", order->numberOfMeals);
+    printf("Order Status: %d\n", order->status);
 
-    // Lock the queue and add the order
-    pthread_mutex_lock(&queue_mutex);
-    enqueue(&order_queue, order);
-    pthread_cond_signal(&queue_cond);
-    pthread_mutex_unlock(&queue_mutex);
-
-    // Prepare the response
-    snprintf(response.message, sizeof(response.message), "Order ID %d received successfully", order.order_id);
-
-    // Send the response to the client
-    send(sock, &response, sizeof(response), 0);
-
-    // Add the client socket to the list
-    pthread_mutex_lock(&client_mutex);
-    client_sockets[client_count++] = sock;
-    pthread_mutex_unlock(&client_mutex);
-
-    return 0;
+    for (int i = 0; i < ORDER_SIZE; i++) {
+        printf("  Meal %d:\n", i + 1);
+        printf("    Status: %d\n", order->meals[i].status);
+        printf("    Order PID: %d\n", order->meals[i].orderPid);
+        printf("    Meal ID: %d\n", order->meals[i].mealId);
+        printf("    Coordinates: (%.2f, %.2f)\n", order->meals[i].x, order->meals[i].y);
+    }
 }
 
-void *order_manager(void *arg) {
-    struct Order order;
-    struct Response response;
-    time_t t;
+// Function prototypes for cook and delivery threads (implementations not provided)
+void *cook_thread(void *arg);
+void *delivery_thread(void *arg);
 
-    while (1) {
-        // Wait for an order to be placed in the queue
-        pthread_mutex_lock(&queue_mutex);
-        while (is_queue_empty(&order_queue)) {
-            pthread_cond_wait(&queue_cond, &queue_mutex);
-        }
-        order = dequeue(&order_queue);
-        pthread_mutex_unlock(&queue_mutex);
-
-        // Prepare the response
-        t = time(NULL);
-        snprintf(response.message, sizeof(response.message), "Order ID %d is being processed. Server time: %s", order.order_id, ctime(&t));
-
-        // Inform all clients that the order is being processed
-        pthread_mutex_lock(&client_mutex);
-        for (int i = 0; i < client_count; i++) {
-            send(client_sockets[i], &response, sizeof(response), 0);
-        }
-        pthread_mutex_unlock(&client_mutex);
-
-        // Simulate order processing time
-        sleep(5);
+void handle_client(int client_socket) {
+    Order *comingOrder = malloc(sizeof(Order));
+    if (comingOrder == NULL) {
+        perror("malloc failed");
+        close(client_socket);
+        return;
     }
 
-    return 0;
+    if (read(client_socket, comingOrder, sizeof(Order)) <= 0) {
+        perror("Failed to read order");
+        close(client_socket);
+        free(comingOrder);
+        return;
+    }
+
+    comingOrder->meals = malloc(ORDER_SIZE * sizeof(Meal));
+    if (comingOrder->meals == NULL) {
+        perror("malloc failed");
+        close(client_socket);
+        free(comingOrder);
+        return;
+    }
+
+    if (read(client_socket, comingOrder->meals, ORDER_SIZE * sizeof(Meal)) <= 0) {
+        perror("Failed to read meals");
+        close(client_socket);
+        free(comingOrder->meals);
+        free(comingOrder);
+        return;
+    }
+
+    printf("Received order from Client ID: %d\n", comingOrder->id);
+    print_order(comingOrder); // Optional: Print the received order details
+
+    // Process the order (send to cook/delivery threads)
+    // ... (Implement logic to add order to shared data structure and signal cook threads)
+
+    // Send acknowledgment to client (optional)
+    // write(client_socket, "Order received", strlen("Order received"));
+
+    close(client_socket);
+    free(comingOrder->meals);
+    free(comingOrder);
 }
 
-int main() {
-    int server_fd, new_socket;
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        fprintf(stderr, "Usage: %s [port] [maxClients]\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    int port = atoi(argv[1]);
+    int max_clients = atoi(argv
+    int server_fd, client_socket;
     struct sockaddr_in address;
     int addrlen = sizeof(address);
-    pthread_t thread_id, manager_thread;
 
-    // Initialize the queue
-    init_queue(&order_queue);
-
-    // Create socket file descriptor
+    // Create a socket
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
         perror("socket failed");
         exit(EXIT_FAILURE);
     }
 
-    // Bind the socket to the network address and port
+    // Set socket options (optional, you can research for SO_REUSEADDR)
+    int opt = 1;
+    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
+        perror("setsockopt");
+        exit(EXIT_FAILURE);
+    }
+
+    // Bind the socket to a specific address and port
     address.sin_family = AF_INET;
-    address.sin_addr.s_addr = INADDR_ANY;
-    address.sin_port = htons(PORT);
+    address.sin_addr.s_addr = INADDR_ANY; // Listen on all interfaces
+    address.sin_port = htons(port);
 
     if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
         perror("bind failed");
-        close(server_fd);
         exit(EXIT_FAILURE);
     }
 
     // Listen for incoming connections
-    if (listen(server_fd, MAX_CLIENTS) < 0) {
+    if (listen(server_fd, max_clients) < 0) {
         perror("listen");
-        close(server_fd);
         exit(EXIT_FAILURE);
     }
 
-    printf("Server is listening on port %d\n", PORT);
+    printf("Server listening on port %d\n", port);
 
-    // Create a thread to manage orders
-    pthread_create(&manager_thread, NULL, order_manager, NULL);
+    // Array or data structure to store orders (shared between threads)
+    // You'll need to implement synchronization mechanisms (mutexes, semaphores)
+    // to ensure safe access to this data structure.
+    Order *orders[MAX_CLIENTS]; // Placeholder, replace with appropriate data structure 
 
-    while ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) >= 0) {
-        // Create a thread for each new client
-        if (pthread_create(&thread_id, NULL, client_handler, (void*)&new_socket) < 0) {
-            perror("could not create thread");
-            return 1;
+    // Create cook and delivery threads
+    pthread_t cook_threads[MAX_COOKS];
+    pthread_t delivery_threads[MAX_DELIVERIES];
+    for (int i = 0; i < MAX_COOKS; i++) {
+        if (pthread_create(&cook_threads[i], NULL, cook_thread, (void *)orders) != 0) {
+            perror("Failed to create cook thread");
         }
-
-        printf("Handler assigned\n");
     }
 
-    if (new_socket < 0) {
-        perror("accept failed");
-        return 1;
+    for (int i = 0; i < MAX_DELIVERIES; i++) {
+        if (pthread_create(&delivery_threads[i], NULL, delivery_thread, (void *)orders) != 0) {
+            perror("Failed to create delivery thread");
+        }
     }
 
+    // Main server loop: Accept connections and handle clients in separate threads
+    while ((client_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t *)&addrlen)) >= 0) {
+        printf("Client connected\n");
+        pthread_t client_thread;
+        pthread_create(&client_thread, NULL, (void *)handle_client, (void *)client_socket);
+        pthread_detach(client_thread); // Detach the thread to avoid resource leaks
+    }
+
+    // Wait for cook and delivery threads to finish (optional)
+    for (int i = 0; i < MAX_COOKS; i++) {
+        pthread_join(cook_threads[i], NULL);
+    }
+
+    for (int i = 0; i < MAX_DELIVERIES; i++) {
+        pthread_join(delivery_threads[i], NULL);
+    }
+
+    close(server_fd);
     return 0;
 }
+
+// Implement cook thread logic
+void *cook_thread(void *arg) {
+    // Cast the argument back to the order data structure
+    Order *order_list = (Order *)arg;
+
+    // Continuously loop
+    while (1) {
+        // Check for new orders in the order list (using synchronization mechanisms)
+        // ...
+
+        // If an order is found, simulate cooking process (e.g., sleep)
+        // ...
+
+        // Update order status and potentially notify delivery threads
+        // ...
+    }
+
+    return NULL;
+}
+
+// Implement delivery thread logic
+void *delivery_thread(void *arg) {
+    // Cast the argument back to the order data structure
+    Order *order_list = (Order *)arg;
+
+    // Continuously loop
+    while (1) {
+        // Check for orders ready for delivery in the order list (using synchronization mechanisms)
+        // ...
+
+        // If an order is found, simulate delivery process (e
