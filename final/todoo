@@ -1,0 +1,21 @@
+
+
+işleyiş:
+
+- müşteri (client) sirapiş için manager'i arar eğer şuanda başka bir görüşmedeyse telefonda bir süre bekler.
+
+- clienttan sipariş'i (sipariş struct) alan manager bunu bir queue'ye yazar ve geri telefona bakmak üzere görevine döner
+
+- müsait aşçı queuden siparişi çeker ve hazılamaya başlar (t süre)
+
+- hazırlanan sipariş fırına veririlir burda t/2 sürede pişer. fırının 2 kapağı vardır, eğer şuanda ikisi de kulanımdaysa ve fırın da doluysa aşçı, elindeki yemeği "pişecek masası"'na bırakır ve yeni siparişi (sipariş struct'tan) alır.
+
+- aşçı aldığı yeni siparişi hazırlarken, fırında yer olduğu bilgisini alınca (cond variiable ile) elindeki işi kısa süreliğine bırakır ve masaya koyduğu yemeğinin fırına girme sırası gelince  gider ve fırına koyar sonra işine devam eder. yemek t/2 sürede pişer
+
+- yarıda bıraktığı işine geri dönen aşçı kaldığı yerden devam eder.
+
+- fırına koyduğu yemek t/2 süre sonunda pişince aşçı yine işini yarıda keser ve yemeği alıp (cooked meals struct) manager'e verir. ve işine geri döner
+
+- manager, pişen yemekleri sırasıyla,  
+
+
