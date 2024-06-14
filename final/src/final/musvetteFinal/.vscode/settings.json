@@ -3,6 +3,8 @@
         "string.h": "c",
         "time.h": "c",
         "queue.h": "c",
-        "linkedlist.h": "c"
+        "linkedlist.h": "c",
+        "inet.h": "c",
+        "unistd.h": "c"
     }
 }

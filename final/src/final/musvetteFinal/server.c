@@ -14,6 +14,16 @@
 #define BUFFER_SIZE 1024
 #define M 500
 #define N 500
+#define MAX_DELIVERY_CAPACITY 3
+
+typedef enum
+{
+    PLACED,
+    PREPARED,
+    COOKED,
+    IN_DELIVERY,
+    DELIVERED
+} MealStatus;
 
 typedef struct
 {
@@ -21,6 +31,8 @@ typedef struct
     int mealId;
     double x;
     double y;
+    MealStatus status;
+    int clientSocket;
 } Meal;
 
 typedef struct
@@ -47,6 +59,7 @@ void printOrder(const Order *order)
         printf("    Order PID: %d\n", order->meals[i].orderPid);
         printf("    Meal ID: %d\n", order->meals[i].mealId);
         printf("    Coordinates: (%.2f, %.2f)\n", order->meals[i].x, order->meals[i].y);
+        printf("    Status: %d\n", order->meals[i].status);
     }
 }
 
@@ -63,6 +76,8 @@ typedef struct
 {
     int id;
     int meal_count;
+    Meal *meals[MAX_DELIVERY_CAPACITY];
+    int meal_index;
 } DeliveryData;
 
 clock_t pseudoInverseMatrix(CookData *cookdata);
@@ -70,6 +85,8 @@ clock_t pseudoInverseMatrix(CookData *cookdata);
 pthread_mutex_t meals_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t oven_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t delivery_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t delivery_mutex_for_bag = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t cooked_meals_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cook_cond = PTHREAD_COND_INITIALIZER;
 pthread_cond_t delivery_cond = PTHREAD_COND_INITIALIZER;
 sem_t meal_semaphore;
@@ -79,6 +96,9 @@ sem_t oven_door_semaphore;
 Queue *meals_queue;
 Queue *delivery_queue;
 LinkedList *oven_list;
+
+int total_meals_received = 0;
+int total_meals_cooked = 0;
 
 void *phonethreadfunc(void *arg)
 {
@@ -157,14 +177,24 @@ void *phonethreadfunc(void *arg)
         pthread_mutex_lock(&meals_mutex);
         for (int i = 0; i < new_order->numberOfMeals; i++)
         {
+            new_order->meals[i].status = PLACED;
+            new_order->meals[i].clientSocket = new_socket;
             enqueue(meals_queue, &new_order->meals[i]);
             sem_post(&meal_semaphore);
+            total_meals_received++;
         }
         printf("Meals received and added to queue\n");
         pthread_mutex_unlock(&meals_mutex);
 
         free(new_order); // Free the order struct, but not the meals, as they are in the queue
-        close(new_socket);
+    }
+}
+
+void sendMealStatus(Meal *meal)
+{
+    if (send(meal->clientSocket, meal, sizeof(Meal), 0) < 0)
+    {
+        perror("Failed to send meal status");
     }
 }
 
@@ -202,7 +232,12 @@ void ovenFunc(Meal *meal, CookData *cook, int comingPurpose)
         sem_post(&oven_aperture_semaphore);
         sem_post(&oven_semaphore);
 
+        cook->mealInOven->status = COOKED;
+        sendMealStatus(cook->mealInOven);
         cook->meal_count++;
+        pthread_mutex_lock(&cooked_meals_mutex);
+        total_meals_cooked++;
+        pthread_mutex_unlock(&cooked_meals_mutex);
         printf("Cook(%d) finished meal %d for order %d\n", cook->id, cook->mealInOven->mealId, cook->mealInOven->orderPid);
         pthread_mutex_lock(&delivery_mutex);
         enqueue(delivery_queue, cook->mealInOven);
@@ -222,11 +257,9 @@ void *cookThreadFunc(void *arg)
         {
             if (cook->mealInOven != NULL && (clock() >= cook->cookingTime))
             {
-                //printf("BURADADADADAD\n");
                 ovenFunc(NULL, cook, 1);
             }
         }
-        // sem_wait(&meal_semaphore);
 
         pthread_mutex_lock(&meals_mutex);
         Meal *meal = (Meal *)dequeue(meals_queue);
@@ -239,16 +272,10 @@ void *cookThreadFunc(void *arg)
 
         // Simulate meal preparation time
         printf("Cook(%d) preparing meal %d for order %d\n", cook->id, meal->mealId, meal->orderPid);
-        // sleep(cook->preparingTime); // Simulate preparation time
         cook->preparingTime = pseudoInverseMatrix(cook);
+        meal->status = PREPARED;
+        sendMealStatus(meal);
         ovenFunc(meal, cook, 0); // Put meal in oven
-
-        // Simulate meal cooking time
-        // sleep(cook->cookingTime); // Simulate cooking time
-
-        // ovenFunc(meal, 1);  // Take meal out of oven
-
-        // Enqueue meal to the delivery queue
     }
 }
 
@@ -257,23 +284,42 @@ void *deliveryThreadFunc(void *arg)
     DeliveryData *data = (DeliveryData *)arg;
     while (1)
     {
-        pthread_mutex_lock(&delivery_mutex);
-        while (isQueueEmpty(delivery_queue))
-        {
-            pthread_cond_wait(&delivery_cond, &delivery_mutex);
-        }
-        Meal *meal = (Meal *)dequeue(delivery_queue);
-        pthread_mutex_unlock(&delivery_mutex);
+        data->meal_index = 0;
 
-        if (meal == NULL)
+        pthread_mutex_lock(&delivery_mutex_for_bag);
+        while (data->meal_index < MAX_DELIVERY_CAPACITY)
         {
-            continue;
+            if (total_meals_received == total_meals_cooked && !isQueueEmpty(delivery_queue))
+            {
+                
+                Meal *meal = (Meal *)dequeue(delivery_queue);
+                data->meals[data->meal_index++] = meal;
+                break;
+            }
+            else if (!isQueueEmpty(delivery_queue))
+            {
+                Meal *meal = (Meal *)dequeue(delivery_queue);
+                data->meals[data->meal_index++] = meal;
+            }
+            else
+            {
+                pthread_cond_wait(&delivery_cond, &delivery_mutex);
+            }
         }
+        pthread_mutex_unlock(&delivery_mutex_for_bag);
 
-        // Simulate delivery time
-        data->meal_count++;
-        printf("Delivery person(%d) delivering meal %d for order %d\n", data->id, meal->mealId, meal->orderPid);
-        sleep(1); // Simulate time
+        for (int i = 0; i < data->meal_index; i++)
+        {
+            // Simulate delivery time
+            data->meals[i]->status = IN_DELIVERY;
+            sendMealStatus(data->meals[i]);
+            data->meal_count++;
+            printf("Delivery person(%d) delivering meal %d for order %d\n", data->id, data->meals[i]->mealId, data->meals[i]->orderPid);
+            sleep(1); // Simulate time
+
+            data->meals[i]->status = DELIVERED;
+            sendMealStatus(data->meals[i]);
+        }
     }
 }
 
@@ -292,11 +338,6 @@ int main(int argc, char *argv[])
 
     pthread_t phone_thread, cook_threads[cookThreadPoolSize], delivery_threads[deliveryPoolSize];
     CookData cook_data[cookThreadPoolSize];
-    // for (size_t i = 0; i < cookThreadPoolSize; i++)
-    // {
-    //     cook_data[i].mealInOven = NULL;
-    // }
-
     DeliveryData delivery_data[deliveryPoolSize];
 
     sem_init(&meal_semaphore, 0, 0);
@@ -346,6 +387,8 @@ int main(int argc, char *argv[])
     pthread_mutex_destroy(&meals_mutex);
     pthread_mutex_destroy(&oven_mutex);
     pthread_mutex_destroy(&delivery_mutex);
+    pthread_mutex_destroy(&delivery_mutex_for_bag);
+    pthread_mutex_destroy(&cooked_meals_mutex);
     pthread_cond_destroy(&cook_cond);
     pthread_cond_destroy(&delivery_cond);
 
@@ -370,11 +413,8 @@ clock_t pseudoInverseMatrix(CookData *cookdata)
     // Initialize the matrix with random non-zero complex numbers
     for (i = 0; i < M; i++)
     {
-            // printf("asdasdasdsdasdasdasdasdasdasdasdasdasdasdasd\n");
-            // printf("segfault: %d",cookdata->mealInOven->mealId);
         if (cookdata->mealInOven != NULL && (clock() >= cookdata->cookingTime))
         {
-            //printf("BURADADADADAD\n");
             ovenFunc(NULL, cookdata, 1);
         }
         for (j = 0; j < N; j++)
@@ -397,7 +437,6 @@ clock_t pseudoInverseMatrix(CookData *cookdata)
     {
         if (cookdata->mealInOven != NULL && (clock() >= cookdata->cookingTime))
         {
-            //printf("BURADADADADAD\n");
             ovenFunc(NULL, cookdata, 1);
         }
         for (j = 0; j < M; j++)
@@ -415,7 +454,6 @@ clock_t pseudoInverseMatrix(CookData *cookdata)
     {
         if (cookdata->mealInOven != NULL && (clock() >= cookdata->cookingTime))
         {
-            //printf("BURADADADADAD\n");
             ovenFunc(NULL, cookdata, 1);
         }
         for (j = 0; j < N; j++)
@@ -433,7 +471,6 @@ clock_t pseudoInverseMatrix(CookData *cookdata)
     {
         if (cookdata->mealInOven != NULL && (clock() >= cookdata->cookingTime))
         {
-            //printf("BURADADADADAD\n");
             ovenFunc(NULL, cookdata, 1);
         }
         for (j = 0; j < M; j++)
@@ -457,7 +494,6 @@ clock_t pseudoInverseMatrix(CookData *cookdata)
         {
             if (cookdata->mealInOven != NULL && (clock() >= cookdata->cookingTime))
             {
-                //printf("BURADADADADAD\n");
                 ovenFunc(NULL, cookdata, 1);
             }
             VS_pinv[i * M + j] = 0.0 + 0.0 * I;
@@ -473,7 +509,6 @@ clock_t pseudoInverseMatrix(CookData *cookdata)
     {
         if (cookdata->mealInOven != NULL && (clock() >= cookdata->cookingTime))
         {
-            //printf("BURADADADADAD\n");
             ovenFunc(NULL, cookdata, 1);
         }
         for (j = 0; j < M; j++)

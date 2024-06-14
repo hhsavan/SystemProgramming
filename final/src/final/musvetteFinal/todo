@@ -1,16 +1,23 @@
 
+2- deliivery karşı tarafa ulaşma hızı 
 
-5- sudo inversion matrix
 
-1- fırına 6dan fazla gidiyor mu?
-
-2- deliivery karşı tarafa ulaşma hızı ve ulaşınca cliente bilgi gitmesi
 3- ctrl c (server, client)
-4- 8080 pportuna bizden önce birinin gelmesi
-6- bilgilerin tutulması ve karşı trafa gönderilmesi
-
-
 7- log
-8- ip muhabbeti
+
+
+
+4- 8080 pportuna bizden önce birinin gelmesi
+
+
+
+
+8- ip-port muhabbeti
 9- test
 
+
+yapııldı:
+- delivery 3 ve  3ü katı kadar alır ve ulaşınca cliente bilgi gitmesi
+6- bilgilerin tutulması ve karşı trafa gönderilmesi
+1- fırına 6dan fazla gidiyor mu????
+5- sudo inversion matrix
