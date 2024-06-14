@@ -146,16 +146,16 @@ void* cookThreadFunc(void* arg) {
         }
 
         // Simulate meal preparation time
-        pthread_mutex_lock(&print_mutex);
+        // pthread_mutex_lock(&print_mutex);
         printf("Cook preparing meal %d for order %d\n", meal->mealId, meal->orderPid);
-        pthread_mutex_ulock(&print_mutex);
+        // pthread_mutex_ulock(&print_mutex);
         sleep(1); // Simulate time
 
         sem_wait(&oven_semaphore);
 
         pthread_mutex_lock(&oven_mutex);
         // Simulate putting meal in oven
-        pthread_mutex_lock(&print_mutex);
+        // pthread_mutex_lock(&print_mutex);
         printf("Cook putting meal %d for order %d in oven\n", meal->mealId, meal->orderPid);
         insertAtEnd(oven_list, meal);
         sleep(1); // Simulate time
