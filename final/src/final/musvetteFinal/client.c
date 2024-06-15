@@ -146,6 +146,24 @@ int connect_to_server(int portnumber)
 
     return sockfd;
 }
+void send_order(int sockfd, Order *order)
+{
+    // Send the order header first
+    if (send(sockfd, order, sizeof(Order), 0) < 0)
+    {
+        perror("Failed to send order header");
+        return;
+    }
+
+    // Send the meals array
+    if (send(sockfd, order->meals, order->numberOfMeals * sizeof(Meal), 0) < 0)
+    {
+        perror("Failed to send meals array");
+        logStatus("Failed to send meals array");
+    }
+
+    printOrder(order); // Print the order after sending
+}
 
 Order generate_order(double p, double q, int numberOfMeals)
 {
@@ -171,24 +189,6 @@ Order generate_order(double p, double q, int numberOfMeals)
     return order;
 }
 
-void send_order(int sockfd, Order *order)
-{
-    // Send the order header first
-    if (send(sockfd, order, sizeof(Order), 0) < 0)
-    {
-        perror("Failed to send order header");
-        return;
-    }
-
-    // Send the meals array
-    if (send(sockfd, order->meals, order->numberOfMeals * sizeof(Meal), 0) < 0)
-    {
-        perror("Failed to send meals array");
-        logStatus("Failed to send meals array");
-    }
-
-    printOrder(order); // Print the order after sending
-}
 
 void receive_updates(int sockfd, int numberOfMeals)
 {

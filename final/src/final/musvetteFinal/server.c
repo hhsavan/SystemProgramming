@@ -15,8 +15,8 @@
 #include "linkedlist.h"
 
 #define BUFFER_SIZE 1024
-#define M 500
-#define N 500
+#define M 30
+#define N 40
 #define MAX_DELIVERY_CAPACITY 3
 
 typedef enum
@@ -155,14 +155,9 @@ void handle_sigint(int sig)
 
     // Cleanup resources
     pthread_cancel(phone_thread);
-    for (int i = 0; i < cookThreadPoolSize; i++)
-    {
-        pthread_cancel(cook_threads[i]);
-    }
-    for (int i = 0; i < deliveryPoolSize; i++)
-    {
-        pthread_cancel(delivery_threads[i]);
-    }
+    for (int i = 0; i < cookThreadPoolSize; i++)    pthread_cancel(cook_threads[i]);
+    
+    for (int i = 0; i < deliveryPoolSize; i++)      pthread_cancel(delivery_threads[i]);
 
     sem_destroy(&meal_semaphore);
     sem_destroy(&oven_semaphore);
@@ -313,7 +308,7 @@ void *phonethreadfunc(void *arg)
     }
 }
 
-void checkMostEfficientPerson(DeliveryData *deliveryPeople, CookData *cooks)
+void BestPerson(DeliveryData *deliveryPeople, CookData *cooks)
 {
     int maxDeliveries = 0;
     int bestDeliveryPerson = -1;
@@ -577,7 +572,14 @@ int main(int argc, char *argv[])
     sa.sa_flags = 0;
     sigaction(SIGPIPE, &sa, NULL);
 
-    signal(SIGINT, handle_sigint);
+
+    struct sigaction sa2;
+    sa2.sa_handler = handle_sigint;
+    sigemptyset(&sa2.sa_mask);
+    sa2.sa_flags = 0;
+    sigaction(SIGINT, &sa2, NULL);
+
+    // signal(SIGINT, handle_sigint);
 
     cook_threads = malloc(cookThreadPoolSize * sizeof(pthread_t));
     delivery_threads = malloc(deliveryPoolSize * sizeof(pthread_t));

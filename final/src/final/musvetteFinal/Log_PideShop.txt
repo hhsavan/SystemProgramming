@@ -165,3 +165,1294 @@ Cook(4) finished meal 16 for order 283541
 Delivery person(2) delivering meal 15 for order 283541
 Delivery person(2) delivering meal 16 for order 283541
 SIGINT caught, shutting down server...
+PideShop active, waiting for connection...
+Connection established with client
+Meals received and added to queue
+Cook(1) preparing meal 0 for order 288745
+Cook(9) preparing meal 1 for order 288745
+Cook(2) preparing meal 2 for order 288745
+Cook(7) preparing meal 4 for order 288745
+Cook(6) preparing meal 8 for order 288745
+Cook(4) preparing meal 9 for order 288745
+Cook(3) preparing meal 5 for order 288745
+Cook(10) preparing meal 6 for order 288745
+Cook(8) preparing meal 7 for order 288745
+Meal 2 for order 288745 is cooking
+Cook(2) preparing meal 10 for order 288745
+Cook(5) preparing meal 3 for order 288745
+Meal 9 for order 288745 is cooking
+Cook(4) preparing meal 11 for order 288745
+Cook(2) finished meal 2 for order 288745
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+Meal 1 for order 288745 is cooking
+Cook(4) finished meal 9 for order 288745
+SIGINT caught, shutting down server...
+Skipping sending meal status due to previous error.
+SIGINT caught, shutting down server...
+Cook(9) preparing meal 12 for order 288745
+Meal 8 for order 288745 is cooking
+PideShop active, waiting for connection...
+Connection established with client
+Meals received and added to queue
+Cook(2) preparing meal 0 for order 293176
+Cook(10) preparing meal 1 for order 293176
+Cook(1) preparing meal 2 for order 293176
+Cook(6) preparing meal 3 for order 293176
+Cook(8) preparing meal 4 for order 293176
+Cook(5) preparing meal 5 for order 293176
+Cook(7) preparing meal 6 for order 293176
+Cook(4) preparing meal 8 for order 293176
+Cook(3) preparing meal 7 for order 293176
+Cook(9) preparing meal 9 for order 293176
+Meal 1 for order 293176 is cooking
+Cook(10) preparing meal 10 for order 293176
+Meal 8 for order 293176 is cooking
+Cook(4) preparing meal 11 for order 293176
+Meal 0 for order 293176 is cooking
+Cook(2) preparing meal 12 for order 293176
+Meal 2 for order 293176 is cooking
+Cook(1) preparing meal 13 for order 293176
+Meal 5 for order 293176 is cooking
+Cook(5) preparing meal 14 for order 293176
+Meal 4 for order 293176 is cooking
+Cook(8) preparing meal 15 for order 293176
+Meal 9 for order 293176 is cooking
+Cook(9) preparing meal 16 for order 293176
+Cook(10) finished meal 1 for order 293176
+Meal 6 for order 293176 is cooking
+Cook(4) finished meal 8 for order 293176
+Meal 7 for order 293176 is cooking
+Cook(2) finished meal 0 for order 293176
+Delivery person(1) delivering meal 1 for order 293176
+Meal 3 for order 293176 is cooking
+Cook(1) finished meal 2 for order 293176
+Cook(5) finished meal 5 for order 293176
+Cook(8) finished meal 4 for order 293176
+Delivery person(4) delivering meal 2 for order 293176
+Delivery person(1) delivering meal 8 for order 293176
+Delivery person(1) delivering meal 0 for order 293176
+Delivery person(4) delivering meal 5 for order 293176
+Meal 11 for order 293176 is cooking
+Meal 10 for order 293176 is cooking
+Cook(9) finished meal 9 for order 293176
+Meal 12 for order 293176 is cooking
+Delivery person(4) delivering meal 4 for order 293176
+Meal 13 for order 293176 is cooking
+Cook(7) finished meal 6 for order 293176
+Meal 15 for order 293176 is cooking
+Cook(3) finished meal 7 for order 293176
+Delivery person(2) delivering meal 9 for order 293176
+Delivery person(2) delivering meal 6 for order 293176
+Delivery person(2) delivering meal 7 for order 293176
+Meal 14 for order 293176 is cooking
+Cook(6) finished meal 3 for order 293176
+Cook(4) finished meal 11 for order 293176
+Cook(10) finished meal 10 for order 293176
+Delivery person(5) delivering meal 3 for order 293176
+Cook(2) finished meal 12 for order 293176
+Cook(1) finished meal 13 for order 293176
+Meal 16 for order 293176 is cooking
+Delivery person(5) delivering meal 11 for order 293176
+Cook(8) finished meal 15 for order 293176
+Delivery person(3) delivering meal 12 for order 293176
+Delivery person(5) delivering meal 10 for order 293176
+Delivery person(3) delivering meal 13 for order 293176
+Delivery person(3) delivering meal 15 for order 293176
+Cook(5) finished meal 14 for order 293176
+Cook(9) finished meal 16 for order 293176
+Delivery person(1) delivering meal 14 for order 293176
+Delivery person(1) delivering meal 16 for order 293176
+Connection established with client
+Meals received and added to queue
+Cook(5) preparing meal 0 for order 293674
+Cook(9) preparing meal 1 for order 293674
+Cook(2) preparing meal 3 for order 293674
+Cook(3) preparing meal 2 for order 293674
+Cook(8) preparing meal 4 for order 293674
+Cook(7) preparing meal 5 for order 293674
+Cook(10) preparing meal 6 for order 293674
+Cook(1) preparing meal 7 for order 293674
+Cook(4) preparing meal 8 for order 293674
+Cook(6) preparing meal 9 for order 293674
+Connection established with client
+Meals received and added to queue
+Meal 3 for order 293674 is cooking
+Cook(2) preparing meal 10 for order 293674
+Meal 2 for order 293674 is cooking
+Cook(3) preparing meal 11 for order 293674
+Meal 7 for order 293674 is cooking
+Cook(1) preparing meal 12 for order 293674
+Meal 1 for order 293674 is cooking
+Cook(9) preparing meal 13 for order 293674
+Meal 9 for order 293674 is cooking
+Cook(6) preparing meal 14 for order 293674
+Meal 8 for order 293674 is cooking
+Cook(4) preparing meal 15 for order 293674
+Meal 5 for order 293674 is cooking
+Cook(7) preparing meal 16 for order 293674
+Cook(2) finished meal 3 for order 293674
+Meal 6 for order 293674 is cooking
+Cook(10) preparing meal 0 for order 293720
+Cook(3) finished meal 2 for order 293674
+Meal 0 for order 293674 is cooking
+Cook(5) preparing meal 1 for order 293720
+Cook(1) finished meal 7 for order 293674
+Delivery person(4) delivering meal 3 for order 293674
+Meal 4 for order 293674 is cooking
+Cook(8) preparing meal 2 for order 293720
+Cook(9) finished meal 1 for order 293674
+Meal 11 for order 293674 is cooking
+Cook(6) finished meal 9 for order 293674
+Cook(3) preparing meal 3 for order 293720
+Cook(4) finished meal 8 for order 293674
+Delivery person(2) delivering meal 1 for order 293674
+Meal 13 for order 293674 is cooking
+Cook(9) preparing meal 4 for order 293720
+Delivery person(4) delivering meal 2 for order 293674
+Delivery person(2) delivering meal 9 for order 293674
+Delivery person(4) delivering meal 7 for order 293674
+Meal 10 for order 293674 is cooking
+Cook(2) preparing meal 5 for order 293720
+Cook(3) finished meal 11 for order 293674
+Delivery person(2) delivering meal 8 for order 293674
+Meal 15 for order 293674 is cooking
+Cook(7) finished meal 5 for order 293674
+Cook(4) preparing meal 6 for order 293720
+Meal 14 for order 293674 is cooking
+Cook(6) preparing meal 7 for order 293720
+Cook(9) finished meal 13 for order 293674
+Delivery person(3) delivering meal 11 for order 293674
+Delivery person(3) delivering meal 5 for order 293674
+Meal 12 for order 293674 is cooking
+Cook(1) preparing meal 8 for order 293720
+Cook(10) finished meal 6 for order 293674
+Cook(5) finished meal 0 for order 293674
+Cook(8) finished meal 4 for order 293674
+Delivery person(5) delivering meal 6 for order 293674
+Delivery person(3) delivering meal 13 for order 293674
+Meal 1 for order 293720 is cooking
+Cook(5) preparing meal 9 for order 293720
+Meal 16 for order 293674 is cooking
+Cook(7) preparing meal 10 for order 293720
+Cook(2) finished meal 10 for order 293674
+Cook(4) finished meal 15 for order 293674
+Delivery person(5) delivering meal 0 for order 293674
+Meal 3 for order 293720 is cooking
+Cook(3) preparing meal 11 for order 293720
+Cook(6) finished meal 14 for order 293674
+Delivery person(1) delivering meal 10 for order 293674
+Meal 0 for order 293720 is cooking
+Cook(10) preparing meal 12 for order 293720
+Cook(1) finished meal 12 for order 293674
+Delivery person(5) delivering meal 4 for order 293674
+Meal 4 for order 293720 is cooking
+Cook(9) preparing meal 13 for order 293720
+Cook(5) finished meal 1 for order 293720
+Meal 2 for order 293720 is cooking
+Cook(8) preparing meal 14 for order 293720
+Cook(7) finished meal 16 for order 293674
+Delivery person(4) delivering meal 12 for order 293674
+Delivery person(4) delivering meal 1 for order 293720
+Delivery person(4) delivering meal 16 for order 293674
+Delivery person(1) delivering meal 15 for order 293674
+Delivery person(1) delivering meal 14 for order 293674
+Cook(3) finished meal 3 for order 293720
+Meal 5 for order 293720 is cooking
+Cook(2) preparing meal 15 for order 293720
+Cook(10) finished meal 0 for order 293720
+Meal 6 for order 293720 is cooking
+Cook(4) preparing meal 16 for order 293720
+Cook(9) finished meal 4 for order 293720
+Delivery person(2) delivering meal 3 for order 293720
+Cook(8) finished meal 2 for order 293720
+Delivery person(2) delivering meal 0 for order 293720
+Cook(2) finished meal 5 for order 293720
+Meal 8 for order 293720 is cooking
+Meal 9 for order 293720 is cooking
+Delivery person(2) delivering meal 4 for order 293720
+Meal 11 for order 293720 is cooking
+Meal 7 for order 293720 is cooking
+Cook(4) finished meal 6 for order 293720
+Delivery person(3) delivering meal 2 for order 293720
+Meal 13 for order 293720 is cooking
+Meal 10 for order 293720 is cooking
+Delivery person(3) delivering meal 5 for order 293720
+Delivery person(3) delivering meal 6 for order 293720
+Meal 12 for order 293720 is cooking
+Cook(5) finished meal 9 for order 293720
+Cook(1) finished meal 8 for order 293720
+Meal 14 for order 293720 is cooking
+Meal 15 for order 293720 is cooking
+Cook(3) finished meal 11 for order 293720
+Delivery person(5) delivering meal 9 for order 293720
+Cook(9) finished meal 13 for order 293720
+Meal 16 for order 293720 is cooking
+Delivery person(5) delivering meal 8 for order 293720
+Cook(6) finished meal 7 for order 293720
+Cook(7) finished meal 10 for order 293720
+Delivery person(4) delivering meal 13 for order 293720
+Delivery person(5) delivering meal 11 for order 293720
+Delivery person(4) delivering meal 7 for order 293720
+Delivery person(4) delivering meal 10 for order 293720
+Cook(10) finished meal 12 for order 293720
+Cook(2) finished meal 15 for order 293720
+Cook(4) finished meal 16 for order 293720
+Delivery person(1) delivering meal 12 for order 293720
+Delivery person(1) delivering meal 15 for order 293720
+Cook(8) finished meal 14 for order 293720
+Delivery person(2) delivering meal 14 for order 293720
+Delivery person(1) delivering meal 16 for order 293720
+Connection established with client
+Meals received and added to queue
+Cook(10) preparing meal 0 for order 294701
+Cook(4) preparing meal 1 for order 294701
+Cook(2) preparing meal 3 for order 294701
+Cook(1) preparing meal 2 for order 294701
+Cook(9) preparing meal 4 for order 294701
+Cook(8) preparing meal 7 for order 294701
+Cook(6) preparing meal 6 for order 294701
+Cook(5) preparing meal 5 for order 294701
+Cook(7) preparing meal 8 for order 294701
+Cook(3) preparing meal 9 for order 294701
+Meal 7 for order 294701 is cooking
+Cook(8) preparing meal 10 for order 294701
+Meal 2 for order 294701 is cooking
+Cook(1) preparing meal 11 for order 294701
+Meal 5 for order 294701 is cooking
+Cook(5) preparing meal 12 for order 294701
+Meal 9 for order 294701 is cooking
+Cook(3) preparing meal 13 for order 294701
+Meal 1 for order 294701 is cooking
+Cook(4) preparing meal 14 for order 294701
+Meal 6 for order 294701 is cooking
+Cook(6) preparing meal 15 for order 294701
+Meal 4 for order 294701 is cooking
+Cook(9) preparing meal 16 for order 294701
+Cook(8) finished meal 7 for order 294701
+Meal 3 for order 294701 is cooking
+Cook(2) preparing meal 17 for order 294701
+Cook(1) finished meal 2 for order 294701
+Meal 0 for order 294701 is cooking
+Cook(10) preparing meal 18 for order 294701
+Cook(5) finished meal 5 for order 294701
+Delivery person(3) delivering meal 7 for order 294701
+Meal 8 for order 294701 is cooking
+Cook(7) preparing meal 19 for order 294701
+Cook(3) finished meal 9 for order 294701
+Cook(4) finished meal 1 for order 294701
+Cook(6) finished meal 6 for order 294701
+Delivery person(4) delivering meal 9 for order 294701
+Delivery person(3) delivering meal 2 for order 294701
+Delivery person(3) delivering meal 5 for order 294701
+Meal 10 for order 294701 is cooking
+Cook(8) preparing meal 20 for order 294701
+Delivery person(4) delivering meal 1 for order 294701
+Meal 11 for order 294701 is cooking
+Cook(1) preparing meal 21 for order 294701
+Delivery person(4) delivering meal 6 for order 294701
+Meal 12 for order 294701 is cooking
+Cook(5) preparing meal 22 for order 294701
+Cook(9) finished meal 4 for order 294701
+Meal 15 for order 294701 is cooking
+Cook(6) preparing meal 23 for order 294701
+Cook(2) finished meal 3 for order 294701
+Meal 13 for order 294701 is cooking
+Cook(3) preparing meal 24 for order 294701
+Cook(8) finished meal 10 for order 294701
+Delivery person(5) delivering meal 4 for order 294701
+Meal 14 for order 294701 is cooking
+Cook(4) preparing meal 25 for order 294701
+Cook(10) finished meal 0 for order 294701
+Cook(7) finished meal 8 for order 294701
+Cook(1) finished meal 11 for order 294701
+Delivery person(2) delivering meal 0 for order 294701
+Delivery person(5) delivering meal 3 for order 294701
+Meal 16 for order 294701 is cooking
+Cook(9) preparing meal 26 for order 294701
+Delivery person(2) delivering meal 8 for order 294701
+Meal 17 for order 294701 is cooking
+Cook(2) preparing meal 27 for order 294701
+Delivery person(5) delivering meal 10 for order 294701
+Cook(5) finished meal 12 for order 294701
+Delivery person(2) delivering meal 11 for order 294701
+Cook(6) finished meal 15 for order 294701
+Cook(3) finished meal 13 for order 294701
+Delivery person(1) delivering meal 12 for order 294701
+Cook(4) finished meal 14 for order 294701
+Meal 19 for order 294701 is cooking
+Cook(7) preparing meal 28 for order 294701
+Meal 18 for order 294701 is cooking
+Cook(10) preparing meal 29 for order 294701
+Cook(9) finished meal 16 for order 294701
+Delivery person(1) delivering meal 15 for order 294701
+Meal 20 for order 294701 is cooking
+Cook(8) preparing meal 30 for order 294701
+Delivery person(1) delivering meal 13 for order 294701
+Cook(2) finished meal 17 for order 294701
+Delivery person(3) delivering meal 14 for order 294701
+Meal 21 for order 294701 is cooking
+Cook(1) preparing meal 31 for order 294701
+Meal 22 for order 294701 is cooking
+Cook(5) preparing meal 32 for order 294701
+Delivery person(3) delivering meal 16 for order 294701
+Cook(7) finished meal 19 for order 294701
+Meal 25 for order 294701 is cooking
+Cook(4) preparing meal 33 for order 294701
+Delivery person(3) delivering meal 17 for order 294701
+Cook(10) finished meal 18 for order 294701
+Meal 26 for order 294701 is cooking
+Cook(9) preparing meal 34 for order 294701
+Meal 23 for order 294701 is cooking
+Cook(6) preparing meal 35 for order 294701
+Cook(8) finished meal 20 for order 294701
+Delivery person(4) delivering meal 19 for order 294701
+Cook(1) finished meal 21 for order 294701
+Delivery person(4) delivering meal 18 for order 294701
+Delivery person(4) delivering meal 20 for order 294701
+Meal 27 for order 294701 is cooking
+Cook(2) preparing meal 36 for order 294701
+Meal 24 for order 294701 is cooking
+Cook(3) preparing meal 37 for order 294701
+Cook(5) finished meal 22 for order 294701
+Meal 29 for order 294701 is cooking
+Cook(10) preparing meal 38 for order 294701
+Cook(4) finished meal 25 for order 294701
+Delivery person(2) delivering meal 21 for order 294701
+Meal 28 for order 294701 is cooking
+Cook(7) preparing meal 39 for order 294701
+Cook(9) finished meal 26 for order 294701
+Delivery person(2) delivering meal 22 for order 294701
+Meal 31 for order 294701 is cooking
+Cook(1) preparing meal 40 for order 294701
+Cook(6) finished meal 23 for order 294701
+Meal 33 for order 294701 is cooking
+Cook(4) preparing meal 41 for order 294701
+Cook(10) finished meal 29 for order 294701
+Delivery person(5) delivering meal 26 for order 294701
+Cook(2) finished meal 27 for order 294701
+Meal 30 for order 294701 is cooking
+Cook(8) preparing meal 42 for order 294701
+Delivery person(2) delivering meal 25 for order 294701
+Delivery person(5) delivering meal 23 for order 294701
+Delivery person(5) delivering meal 29 for order 294701
+Cook(3) finished meal 24 for order 294701
+Meal 32 for order 294701 is cooking
+Cook(5) preparing meal 43 for order 294701
+Meal 34 for order 294701 is cooking
+Cook(9) preparing meal 44 for order 294701
+Cook(7) finished meal 28 for order 294701
+Delivery person(1) delivering meal 27 for order 294701
+Meal 36 for order 294701 is cooking
+Cook(2) preparing meal 45 for order 294701
+Meal 35 for order 294701 is cooking
+Cook(6) preparing meal 46 for order 294701
+Cook(4) finished meal 33 for order 294701
+Delivery person(1) delivering meal 24 for order 294701
+Delivery person(1) delivering meal 28 for order 294701
+Cook(1) finished meal 31 for order 294701
+Meal 37 for order 294701 is cooking
+Cook(3) preparing meal 47 for order 294701
+Meal 38 for order 294701 is cooking
+Cook(10) preparing meal 48 for order 294701
+Cook(8) finished meal 30 for order 294701
+Delivery person(3) delivering meal 33 for order 294701
+Cook(9) finished meal 34 for order 294701
+Cook(2) finished meal 36 for order 294701
+Cook(5) finished meal 32 for order 294701
+Delivery person(4) delivering meal 34 for order 294701
+Delivery person(4) delivering meal 36 for order 294701
+Delivery person(3) delivering meal 31 for order 294701
+Delivery person(3) delivering meal 30 for order 294701
+Delivery person(4) delivering meal 32 for order 294701
+Cook(6) finished meal 35 for order 294701
+Meal 40 for order 294701 is cooking
+Cook(1) preparing meal 49 for order 294701
+Meal 39 for order 294701 is cooking
+Cook(7) preparing meal 50 for order 294701
+Cook(3) finished meal 37 for order 294701
+Meal 45 for order 294701 is cooking
+Cook(10) finished meal 38 for order 294701
+Delivery person(2) delivering meal 35 for order 294701
+Delivery person(2) delivering meal 37 for order 294701
+Meal 44 for order 294701 is cooking
+Meal 41 for order 294701 is cooking
+Meal 42 for order 294701 is cooking
+Delivery person(2) delivering meal 38 for order 294701
+Meal 46 for order 294701 is cooking
+Cook(2) finished meal 45 for order 294701
+Meal 43 for order 294701 is cooking
+Cook(1) finished meal 40 for order 294701
+Meal 48 for order 294701 is cooking
+Cook(9) finished meal 44 for order 294701
+Delivery person(5) delivering meal 45 for order 294701
+Meal 47 for order 294701 is cooking
+Cook(7) finished meal 39 for order 294701
+Delivery person(5) delivering meal 40 for order 294701
+Cook(4) finished meal 41 for order 294701
+Cook(8) finished meal 42 for order 294701
+Delivery person(1) delivering meal 39 for order 294701
+Meal 49 for order 294701 is cooking
+Cook(6) finished meal 46 for order 294701
+Delivery person(5) delivering meal 44 for order 294701
+Meal 50 for order 294701 is cooking
+Delivery person(1) delivering meal 41 for order 294701
+Delivery person(1) delivering meal 42 for order 294701
+Cook(10) finished meal 48 for order 294701
+Cook(5) finished meal 43 for order 294701
+Delivery person(3) delivering meal 46 for order 294701
+Delivery person(3) delivering meal 48 for order 294701
+Delivery person(3) delivering meal 43 for order 294701
+Cook(3) finished meal 47 for order 294701
+Cook(1) finished meal 49 for order 294701
+Cook(7) finished meal 50 for order 294701
+Delivery person(4) delivering meal 47 for order 294701
+Delivery person(4) delivering meal 49 for order 294701
+Delivery person(4) delivering meal 50 for order 294701
+Connection established with client
+Meals received and added to queue
+Cook(10) preparing meal 0 for order 297005
+Cook(7) preparing meal 1 for order 297005
+Cook(8) preparing meal 2 for order 297005
+Cook(5) preparing meal 6 for order 297005
+Cook(9) preparing meal 3 for order 297005
+Cook(1) preparing meal 5 for order 297005
+Cook(2) preparing meal 4 for order 297005
+Cook(3) preparing meal 7 for order 297005
+Cook(4) preparing meal 9 for order 297005
+Cook(6) preparing meal 8 for order 297005
+Meal 6 for order 297005 is cooking
+Cook(5) preparing meal 10 for order 297005
+Meal 7 for order 297005 is cooking
+Cook(3) preparing meal 11 for order 297005
+Connection established with client
+Meals received and added to queue
+Meal 9 for order 297005 is cooking
+Cook(4) preparing meal 12 for order 297005
+Meal 0 for order 297005 is cooking
+Cook(10) preparing meal 13 for order 297005
+Meal 4 for order 297005 is cooking
+Cook(2) preparing meal 14 for order 297005
+Meal 2 for order 297005 is cooking
+Cook(8) preparing meal 15 for order 297005
+Meal 1 for order 297005 is cooking
+Cook(7) preparing meal 16 for order 297005
+Cook(5) finished meal 6 for order 297005
+Meal 5 for order 297005 is cooking
+Cook(1) preparing meal 17 for order 297005
+Cook(3) finished meal 7 for order 297005
+Meal 3 for order 297005 is cooking
+Cook(9) preparing meal 18 for order 297005
+Cook(4) finished meal 9 for order 297005
+Delivery person(2) delivering meal 6 for order 297005
+Meal 8 for order 297005 is cooking
+Cook(6) preparing meal 19 for order 297005
+Cook(10) finished meal 0 for order 297005
+Cook(2) finished meal 4 for order 297005
+Cook(8) finished meal 2 for order 297005
+Delivery person(5) delivering meal 0 for order 297005
+Delivery person(2) delivering meal 7 for order 297005
+Meal 10 for order 297005 is cooking
+Cook(5) preparing meal 20 for order 297005
+Meal 11 for order 297005 is cooking
+Cook(3) preparing meal 21 for order 297005
+Delivery person(5) delivering meal 4 for order 297005
+Meal 13 for order 297005 is cooking
+Cook(7) finished meal 1 for order 297005
+Delivery person(2) delivering meal 9 for order 297005
+Cook(10) preparing meal 22 for order 297005
+Delivery person(5) delivering meal 2 for order 297005
+Meal 12 for order 297005 is cooking
+Cook(4) preparing meal 23 for order 297005
+Cook(1) finished meal 5 for order 297005
+Meal 15 for order 297005 is cooking
+Cook(8) preparing meal 24 for order 297005
+Cook(9) finished meal 3 for order 297005
+Delivery person(1) delivering meal 1 for order 297005
+Delivery person(1) delivering meal 5 for order 297005
+Meal 14 for order 297005 is cooking
+Cook(2) preparing meal 25 for order 297005
+Cook(3) finished meal 11 for order 297005
+Cook(6) finished meal 8 for order 297005
+Meal 16 for order 297005 is cooking
+Cook(7) preparing meal 26 for order 297005
+Cook(5) finished meal 10 for order 297005
+Delivery person(3) delivering meal 11 for order 297005
+Cook(10) finished meal 13 for order 297005
+Delivery person(1) delivering meal 3 for order 297005
+Delivery person(3) delivering meal 8 for order 297005
+Delivery person(3) delivering meal 10 for order 297005
+Meal 17 for order 297005 is cooking
+Cook(1) preparing meal 27 for order 297005
+Cook(4) finished meal 12 for order 297005
+Meal 19 for order 297005 is cooking
+Cook(6) preparing meal 28 for order 297005
+Meal 18 for order 297005 is cooking
+Cook(9) preparing meal 29 for order 297005
+Cook(8) finished meal 15 for order 297005
+Delivery person(4) delivering meal 13 for order 297005
+Delivery person(4) delivering meal 12 for order 297005
+Cook(2) finished meal 14 for order 297005
+Cook(7) finished meal 16 for order 297005
+Meal 21 for order 297005 is cooking
+Cook(3) preparing meal 30 for order 297005
+Meal 20 for order 297005 is cooking
+Cook(5) preparing meal 31 for order 297005
+Delivery person(4) delivering meal 15 for order 297005
+Meal 22 for order 297005 is cooking
+Cook(10) preparing meal 32 for order 297005
+Cook(1) finished meal 17 for order 297005
+Delivery person(2) delivering meal 14 for order 297005
+Cook(6) finished meal 19 for order 297005
+Meal 24 for order 297005 is cooking
+Cook(8) preparing meal 33 for order 297005
+Cook(9) finished meal 18 for order 297005
+Delivery person(2) delivering meal 16 for order 297005
+Meal 23 for order 297005 is cooking
+Cook(4) preparing meal 34 for order 297005
+Cook(3) finished meal 21 for order 297005
+Delivery person(5) delivering meal 19 for order 297005
+Cook(10) finished meal 22 for order 297005
+Cook(5) finished meal 20 for order 297005
+Meal 26 for order 297005 is cooking
+Cook(7) preparing meal 35 for order 297005
+Delivery person(2) delivering meal 17 for order 297005
+Meal 27 for order 297005 is cooking
+Cook(1) preparing meal 36 for order 297005
+Delivery person(5) delivering meal 18 for order 297005
+Meal 25 for order 297005 is cooking
+Cook(2) preparing meal 37 for order 297005
+Cook(8) finished meal 24 for order 297005
+Delivery person(3) delivering meal 22 for order 297005
+Delivery person(5) delivering meal 21 for order 297005
+Meal 28 for order 297005 is cooking
+Cook(6) preparing meal 38 for order 297005
+Delivery person(3) delivering meal 20 for order 297005
+Meal 31 for order 297005 is cooking
+Cook(5) preparing meal 39 for order 297005
+Cook(4) finished meal 23 for order 297005
+Cook(7) finished meal 26 for order 297005
+Cook(1) finished meal 27 for order 297005
+Delivery person(1) delivering meal 23 for order 297005
+Delivery person(3) delivering meal 24 for order 297005
+Meal 32 for order 297005 is cooking
+Cook(10) preparing meal 40 for order 297005
+Meal 29 for order 297005 is cooking
+Cook(9) preparing meal 41 for order 297005
+Delivery person(1) delivering meal 26 for order 297005
+Meal 33 for order 297005 is cooking
+Cook(8) preparing meal 42 for order 297005
+Delivery person(1) delivering meal 27 for order 297005
+Cook(2) finished meal 25 for order 297005
+Meal 30 for order 297005 is cooking
+Cook(3) preparing meal 43 for order 297005
+Cook(6) finished meal 28 for order 297005
+Cook(5) finished meal 31 for order 297005
+Delivery person(4) delivering meal 25 for order 297005
+Meal 34 for order 297005 is cooking
+Cook(4) preparing meal 44 for order 297005
+Delivery person(4) delivering meal 28 for order 297005
+Meal 35 for order 297005 is cooking
+Cook(7) preparing meal 45 for order 297005
+Connection established with client
+Order canceled, PID 297005
+Delivery person(4) skipping canceled meal 31 for order 297005
+Cook(6) preparing meal 0 for order 297089
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+PideShop active, waiting for connection...
+Connection established with client
+Meals received and added to queue
+Cook(1) preparing meal 0 for order 302183
+Cook(9) preparing meal 1 for order 302183
+Cook(4) preparing meal 2 for order 302183
+Cook(6) preparing meal 3 for order 302183
+Cook(7) preparing meal 4 for order 302183
+Cook(2) preparing meal 5 for order 302183
+Cook(10) preparing meal 6 for order 302183
+Cook(8) preparing meal 8 for order 302183
+Cook(3) preparing meal 7 for order 302183
+Cook(5) preparing meal 9 for order 302183
+Meal 5 for order 302183 is cooking
+Cook(2) preparing meal 10 for order 302183
+Meal 7 for order 302183 is cooking
+Cook(3) preparing meal 11 for order 302183
+Meal 9 for order 302183 is cooking
+Cook(5) preparing meal 12 for order 302183
+Meal 2 for order 302183 is cooking
+Cook(4) preparing meal 13 for order 302183
+Meal 8 for order 302183 is cooking
+Cook(8) preparing meal 14 for order 302183
+Connection established with client
+Meals received and added to queue
+Meal 1 for order 302183 is cooking
+Cook(9) preparing meal 15 for order 302183
+Meal 3 for order 302183 is cooking
+Cook(6) preparing meal 16 for order 302183
+Cook(2) finished meal 5 for order 302183
+Meal 4 for order 302183 is cooking
+Cook(7) preparing meal 17 for order 302183
+Cook(3) finished meal 7 for order 302183
+Meal 6 for order 302183 is cooking
+Cook(10) preparing meal 18 for order 302183
+Cook(5) finished meal 9 for order 302183
+Delivery person(1) delivering meal 5 for order 302183
+Meal 0 for order 302183 is cooking
+Cook(1) preparing meal 0 for order 302268
+Cook(4) finished meal 2 for order 302183
+Cook(8) finished meal 8 for order 302183
+Cook(9) finished meal 1 for order 302183
+Delivery person(5) delivering meal 2 for order 302183
+Delivery person(1) delivering meal 7 for order 302183
+Meal 10 for order 302183 is cooking
+Cook(2) preparing meal 1 for order 302268
+Meal 11 for order 302183 is cooking
+Cook(3) preparing meal 2 for order 302268
+Delivery person(5) delivering meal 8 for order 302183
+Delivery person(1) delivering meal 9 for order 302183
+Meal 12 for order 302183 is cooking
+Cook(5) preparing meal 3 for order 302268
+Cook(6) finished meal 3 for order 302183
+Delivery person(5) delivering meal 1 for order 302183
+Meal 13 for order 302183 is cooking
+Cook(4) preparing meal 4 for order 302268
+Cook(7) finished meal 4 for order 302183
+Meal 14 for order 302183 is cooking
+Cook(8) preparing meal 5 for order 302268
+Cook(10) finished meal 6 for order 302183
+Delivery person(4) delivering meal 3 for order 302183
+Delivery person(4) delivering meal 4 for order 302183
+Meal 15 for order 302183 is cooking
+Cook(1) finished meal 0 for order 302183
+Cook(9) preparing meal 6 for order 302268
+Cook(3) finished meal 11 for order 302183
+Cook(2) finished meal 10 for order 302183
+Delivery person(3) delivering meal 0 for order 302183
+Meal 16 for order 302183 is cooking
+Cook(6) preparing meal 7 for order 302268
+Cook(5) finished meal 12 for order 302183
+Delivery person(4) delivering meal 6 for order 302183
+Delivery person(3) delivering meal 11 for order 302183
+Cook(4) finished meal 13 for order 302183
+Meal 0 for order 302268 is cooking
+Cook(1) preparing meal 8 for order 302268
+Meal 17 for order 302183 is cooking
+Cook(7) preparing meal 9 for order 302268
+Meal 18 for order 302183 is cooking
+Delivery person(3) delivering meal 10 for order 302183
+Cook(10) preparing meal 10 for order 302268
+Cook(8) finished meal 14 for order 302183
+Delivery person(2) delivering meal 12 for order 302183
+Cook(9) finished meal 15 for order 302183
+Meal 1 for order 302268 is cooking
+Cook(2) preparing meal 11 for order 302268
+Delivery person(2) delivering meal 13 for order 302183
+Meal 2 for order 302268 is cooking
+Cook(3) preparing meal 12 for order 302268
+Cook(6) finished meal 16 for order 302183
+Delivery person(2) delivering meal 14 for order 302183
+Meal 3 for order 302268 is cooking
+Cook(5) preparing meal 13 for order 302268
+Cook(1) finished meal 0 for order 302268
+Delivery person(1) delivering meal 15 for order 302183
+Delivery person(1) delivering meal 16 for order 302183
+Cook(7) finished meal 17 for order 302183
+Cook(10) finished meal 18 for order 302183
+Delivery person(1) delivering meal 0 for order 302268
+Cook(2) finished meal 1 for order 302268
+Delivery person(4) delivering meal 17 for order 302183
+Meal 4 for order 302268 is cooking
+Cook(4) preparing meal 14 for order 302268
+Meal 6 for order 302268 is cooking
+Cook(9) preparing meal 15 for order 302268
+Cook(3) finished meal 2 for order 302268
+Meal 5 for order 302268 is cooking
+Cook(8) preparing meal 16 for order 302268
+Delivery person(4) delivering meal 18 for order 302183
+Meal 7 for order 302268 is cooking
+Cook(6) preparing meal 17 for order 302268
+Meal 8 for order 302268 is cooking
+Cook(1) preparing meal 18 for order 302268
+Cook(5) finished meal 3 for order 302268
+Delivery person(4) delivering meal 1 for order 302268
+Meal 9 for order 302268 is cooking
+Cook(7) preparing meal 19 for order 302268
+Meal 10 for order 302268 is cooking
+Cook(10) preparing meal 20 for order 302268
+Cook(4) finished meal 4 for order 302268
+Delivery person(5) delivering meal 2 for order 302268
+Meal 12 for order 302268 is cooking
+Cook(9) finished meal 6 for order 302268
+Cook(3) preparing meal 21 for order 302268
+Meal 13 for order 302268 is cooking
+Cook(5) preparing meal 22 for order 302268
+Cook(8) finished meal 5 for order 302268
+Cook(1) finished meal 8 for order 302268
+Delivery person(3) delivering meal 6 for order 302268
+Meal 11 for order 302268 is cooking
+Cook(2) preparing meal 23 for order 302268
+Delivery person(5) delivering meal 3 for order 302268
+Cook(6) finished meal 7 for order 302268
+Delivery person(3) delivering meal 5 for order 302268
+Delivery person(5) delivering meal 4 for order 302268
+Cook(7) finished meal 9 for order 302268
+Delivery person(3) delivering meal 8 for order 302268
+Cook(3) finished meal 12 for order 302268
+Delivery person(2) delivering meal 7 for order 302268
+Meal 16 for order 302268 is cooking
+Cook(8) preparing meal 24 for order 302268
+Meal 15 for order 302268 is cooking
+Cook(10) finished meal 10 for order 302268
+Cook(9) preparing meal 25 for order 302268
+Cook(5) finished meal 13 for order 302268
+Delivery person(2) delivering meal 9 for order 302268
+Cook(2) finished meal 11 for order 302268
+Delivery person(1) delivering meal 10 for order 302268
+Meal 17 for order 302268 is cooking
+Cook(6) preparing meal 26 for order 302268
+Meal 14 for order 302268 is cooking
+Cook(4) preparing meal 27 for order 302268
+Delivery person(2) delivering meal 12 for order 302268
+Meal 18 for order 302268 is cooking
+Cook(1) preparing meal 28 for order 302268
+Delivery person(1) delivering meal 13 for order 302268
+Delivery person(1) delivering meal 11 for order 302268
+Cook(8) finished meal 16 for order 302268
+Meal 19 for order 302268 is cooking
+Cook(7) preparing meal 29 for order 302268
+Meal 21 for order 302268 is cooking
+Cook(3) preparing meal 30 for order 302268
+Cook(9) finished meal 15 for order 302268
+Meal 20 for order 302268 is cooking
+Cook(10) preparing meal 31 for order 302268
+Meal 23 for order 302268 is cooking
+Cook(6) finished meal 17 for order 302268
+Delivery person(4) delivering meal 16 for order 302268
+Cook(2) preparing meal 32 for order 302268
+Delivery person(4) delivering meal 15 for order 302268
+Delivery person(4) delivering meal 17 for order 302268
+Cook(4) finished meal 14 for order 302268
+Meal 22 for order 302268 is cooking
+Cook(5) preparing meal 33 for order 302268
+Cook(1) finished meal 18 for order 302268
+Cook(3) finished meal 21 for order 302268
+Delivery person(3) delivering meal 14 for order 302268
+Meal 25 for order 302268 is cooking
+Cook(9) preparing meal 34 for order 302268
+Cook(7) finished meal 19 for order 302268
+Meal 24 for order 302268 is cooking
+Cook(8) preparing meal 35 for order 302268
+Cook(10) finished meal 20 for order 302268
+Delivery person(3) delivering meal 18 for order 302268
+Meal 27 for order 302268 is cooking
+Cook(4) preparing meal 36 for order 302268
+Cook(2) finished meal 23 for order 302268
+Delivery person(5) delivering meal 19 for order 302268
+Meal 26 for order 302268 is cooking
+Cook(6) preparing meal 37 for order 302268
+Delivery person(3) delivering meal 21 for order 302268
+Delivery person(5) delivering meal 20 for order 302268
+Cook(5) finished meal 22 for order 302268
+Meal 30 for order 302268 is cooking
+Cook(3) preparing meal 38 for order 302268
+Meal 28 for order 302268 is cooking
+Cook(1) preparing meal 39 for order 302268
+Cook(9) finished meal 25 for order 302268
+Cook(8) finished meal 24 for order 302268
+Delivery person(2) delivering meal 22 for order 302268
+Delivery person(2) delivering meal 25 for order 302268
+Delivery person(2) delivering meal 24 for order 302268
+Meal 29 for order 302268 is cooking
+Cook(7) preparing meal 40 for order 302268
+Cook(4) finished meal 27 for order 302268
+Delivery person(5) delivering meal 23 for order 302268
+Meal 32 for order 302268 is cooking
+Cook(2) preparing meal 41 for order 302268
+Cook(6) finished meal 26 for order 302268
+Meal 31 for order 302268 is cooking
+Cook(10) preparing meal 42 for order 302268
+Meal 35 for order 302268 is cooking
+Cook(8) preparing meal 43 for order 302268
+Cook(3) finished meal 30 for order 302268
+Delivery person(1) delivering meal 27 for order 302268
+Meal 33 for order 302268 is cooking
+Cook(5) preparing meal 44 for order 302268
+Meal 34 for order 302268 is cooking
+Cook(9) preparing meal 45 for order 302268
+Cook(1) finished meal 28 for order 302268
+Delivery person(1) delivering meal 26 for order 302268
+Delivery person(1) delivering meal 30 for order 302268
+Meal 36 for order 302268 is cooking
+Cook(4) preparing meal 46 for order 302268
+Cook(7) finished meal 29 for order 302268
+Cook(2) finished meal 32 for order 302268
+Delivery person(4) delivering meal 28 for order 302268
+Meal 37 for order 302268 is cooking
+Cook(6) preparing meal 47 for order 302268
+Cook(10) finished meal 31 for order 302268
+Cook(8) finished meal 35 for order 302268
+Delivery person(4) delivering meal 29 for order 302268
+Delivery person(4) delivering meal 32 for order 302268
+Meal 38 for order 302268 is cooking
+Cook(3) preparing meal 48 for order 302268
+Meal 41 for order 302268 is cooking
+Cook(2) preparing meal 49 for order 302268
+Cook(5) finished meal 33 for order 302268
+Delivery person(3) delivering meal 31 for order 302268
+Cook(9) finished meal 34 for order 302268
+Cook(4) finished meal 36 for order 302268
+Meal 40 for order 302268 is cooking
+Cook(7) preparing meal 50 for order 302268
+Delivery person(3) delivering meal 35 for order 302268
+Delivery person(3) delivering meal 33 for order 302268
+Meal 43 for order 302268 is cooking
+Cook(8) preparing meal 51 for order 302268
+Meal 44 for order 302268 is cooking
+Cook(5) preparing meal 52 for order 302268
+Meal 39 for order 302268 is cooking
+Cook(1) preparing meal 53 for order 302268
+Cook(6) finished meal 37 for order 302268
+Delivery person(2) delivering meal 34 for order 302268
+Cook(2) finished meal 41 for order 302268
+Meal 45 for order 302268 is cooking
+Cook(9) preparing meal 54 for order 302268
+Delivery person(2) delivering meal 36 for order 302268
+Cook(3) finished meal 38 for order 302268
+Meal 42 for order 302268 is cooking
+Cook(10) preparing meal 55 for order 302268
+Delivery person(2) delivering meal 37 for order 302268
+Cook(8) finished meal 43 for order 302268
+Delivery person(5) delivering meal 41 for order 302268
+Cook(7) finished meal 40 for order 302268
+Cook(5) finished meal 44 for order 302268
+Delivery person(5) delivering meal 38 for order 302268
+Cook(9) finished meal 45 for order 302268
+Delivery person(1) delivering meal 40 for order 302268
+Meal 47 for order 302268 is cooking
+Cook(6) preparing meal 56 for order 302268
+Meal 46 for order 302268 is cooking
+Cook(4) preparing meal 57 for order 302268
+Delivery person(5) delivering meal 43 for order 302268
+Cook(1) finished meal 39 for order 302268
+Delivery person(1) delivering meal 44 for order 302268
+Delivery person(1) delivering meal 45 for order 302268
+Meal 50 for order 302268 is cooking
+Cook(7) preparing meal 58 for order 302268
+Meal 51 for order 302268 is cooking
+Cook(8) preparing meal 59 for order 302268
+Meal 49 for order 302268 is cooking
+Cook(2) preparing meal 60 for order 302268
+Meal 52 for order 302268 is cooking
+Cook(5) preparing meal 61 for order 302268
+Cook(10) finished meal 42 for order 302268
+Meal 48 for order 302268 is cooking
+Cook(3) preparing meal 62 for order 302268
+Cook(6) finished meal 47 for order 302268
+Delivery person(4) delivering meal 39 for order 302268
+Delivery person(4) delivering meal 42 for order 302268
+Delivery person(4) delivering meal 47 for order 302268
+Meal 53 for order 302268 is cooking
+Cook(1) preparing meal 63 for order 302268
+Cook(8) finished meal 51 for order 302268
+Cook(7) finished meal 50 for order 302268
+Meal 54 for order 302268 is cooking
+Cook(9) preparing meal 64 for order 302268
+Cook(4) finished meal 46 for order 302268
+Delivery person(3) delivering meal 51 for order 302268
+Delivery person(3) delivering meal 50 for order 302268
+Delivery person(3) delivering meal 46 for order 302268
+Cook(2) finished meal 49 for order 302268
+Meal 55 for order 302268 is cooking
+Cook(10) preparing meal 65 for order 302268
+Cook(5) finished meal 52 for order 302268
+Cook(1) finished meal 53 for order 302268
+Delivery person(2) delivering meal 49 for order 302268
+Meal 57 for order 302268 is cooking
+Cook(4) preparing meal 66 for order 302268
+Meal 59 for order 302268 is cooking
+Cook(8) preparing meal 67 for order 302268
+Cook(3) finished meal 48 for order 302268
+Meal 58 for order 302268 is cooking
+Cook(7) preparing meal 68 for order 302268
+Cook(9) finished meal 54 for order 302268
+Meal 60 for order 302268 is cooking
+Cook(2) preparing meal 69 for order 302268
+Delivery person(2) delivering meal 52 for order 302268
+Meal 56 for order 302268 is cooking
+Cook(6) preparing meal 70 for order 302268
+Cook(10) finished meal 55 for order 302268
+Delivery person(5) delivering meal 48 for order 302268
+Delivery person(5) delivering meal 54 for order 302268
+Delivery person(5) delivering meal 55 for order 302268
+Delivery person(2) delivering meal 53 for order 302268
+Meal 61 for order 302268 is cooking
+Cook(5) preparing meal 71 for order 302268
+Meal 62 for order 302268 is cooking
+Cook(3) preparing meal 72 for order 302268
+Cook(4) finished meal 57 for order 302268
+Cook(8) finished meal 59 for order 302268
+Cook(7) finished meal 58 for order 302268
+Delivery person(1) delivering meal 57 for order 302268
+Delivery person(1) delivering meal 59 for order 302268
+Cook(2) finished meal 60 for order 302268
+Meal 63 for order 302268 is cooking
+Cook(1) preparing meal 73 for order 302268
+Delivery person(1) delivering meal 58 for order 302268
+Meal 64 for order 302268 is cooking
+Cook(9) preparing meal 74 for order 302268
+Connection established with client
+Meals received and added to queue
+Cook(6) finished meal 56 for order 302268
+Cook(5) finished meal 61 for order 302268
+Delivery person(4) delivering meal 60 for order 302268
+Meal 65 for order 302268 is cooking
+Cook(10) preparing meal 75 for order 302268
+Meal 66 for order 302268 is cooking
+Cook(4) preparing meal 76 for order 302268
+Delivery person(4) delivering meal 56 for order 302268
+Delivery person(4) delivering meal 61 for order 302268
+Cook(3) finished meal 62 for order 302268
+Meal 69 for order 302268 is cooking
+Cook(2) preparing meal 77 for order 302268
+Meal 67 for order 302268 is cooking
+Cook(8) preparing meal 78 for order 302268
+Cook(1) finished meal 63 for order 302268
+Meal 68 for order 302268 is cooking
+Cook(7) preparing meal 79 for order 302268
+Meal 70 for order 302268 is cooking
+Cook(6) preparing meal 80 for order 302268
+Cook(9) finished meal 64 for order 302268
+Delivery person(3) delivering meal 62 for order 302268
+Meal 71 for order 302268 is cooking
+Cook(5) preparing meal 81 for order 302268
+Cook(4) finished meal 66 for order 302268
+Cook(2) finished meal 69 for order 302268
+Cook(10) finished meal 65 for order 302268
+Delivery person(5) delivering meal 66 for order 302268
+Delivery person(3) delivering meal 63 for order 302268
+Meal 72 for order 302268 is cooking
+Cook(3) preparing meal 82 for order 302268
+Cook(8) finished meal 67 for order 302268
+Delivery person(5) delivering meal 69 for order 302268
+Delivery person(3) delivering meal 64 for order 302268
+Cook(7) finished meal 68 for order 302268
+Meal 73 for order 302268 is cooking
+Cook(1) preparing meal 83 for order 302268
+Meal 76 for order 302268 is cooking
+Cook(4) preparing meal 84 for order 302268
+Cook(6) finished meal 70 for order 302268
+Delivery person(2) delivering meal 67 for order 302268
+Meal 77 for order 302268 is cooking
+Cook(2) preparing meal 85 for order 302268
+Meal 78 for order 302268 is cooking
+Cook(8) preparing meal 86 for order 302268
+Cook(5) finished meal 71 for order 302268
+Delivery person(5) delivering meal 65 for order 302268
+Cook(3) finished meal 72 for order 302268
+Delivery person(2) delivering meal 68 for order 302268
+Meal 74 for order 302268 is cooking
+Cook(9) preparing meal 87 for order 302268
+Meal 75 for order 302268 is cooking
+Cook(10) preparing meal 88 for order 302268
+Cook(4) finished meal 76 for order 302268
+Delivery person(1) delivering meal 71 for order 302268
+Cook(2) finished meal 77 for order 302268
+Delivery person(2) delivering meal 70 for order 302268
+Meal 80 for order 302268 is cooking
+Cook(6) preparing meal 89 for order 302268
+Cook(1) finished meal 73 for order 302268
+Cook(8) finished meal 78 for order 302268
+Delivery person(4) delivering meal 77 for order 302268
+Meal 79 for order 302268 is cooking
+Cook(7) preparing meal 90 for order 302268
+Meal 82 for order 302268 is cooking
+Cook(3) preparing meal 91 for order 302268
+Delivery person(1) delivering meal 72 for order 302268
+Meal 81 for order 302268 is cooking
+Cook(5) preparing meal 92 for order 302268
+Delivery person(4) delivering meal 73 for order 302268
+Delivery person(1) delivering meal 76 for order 302268
+Cook(9) finished meal 74 for order 302268
+Delivery person(4) delivering meal 78 for order 302268
+Cook(10) finished meal 75 for order 302268
+Meal 85 for order 302268 is cooking
+Cook(2) preparing meal 93 for order 302268
+Meal 83 for order 302268 is cooking
+Cook(1) preparing meal 94 for order 302268
+Cook(6) finished meal 80 for order 302268
+Delivery person(3) delivering meal 74 for order 302268
+Cook(3) finished meal 82 for order 302268
+Meal 86 for order 302268 is cooking
+Cook(8) preparing meal 95 for order 302268
+Cook(5) finished meal 81 for order 302268
+Cook(7) finished meal 79 for order 302268
+Delivery person(5) delivering meal 82 for order 302268
+Delivery person(5) delivering meal 81 for order 302268
+Meal 84 for order 302268 is cooking
+Cook(4) preparing meal 96 for order 302268
+Delivery person(3) delivering meal 75 for order 302268
+Meal 87 for order 302268 is cooking
+Cook(9) preparing meal 97 for order 302268
+Delivery person(5) delivering meal 79 for order 302268
+Delivery person(3) delivering meal 80 for order 302268
+Meal 88 for order 302268 is cooking
+Cook(10) preparing meal 98 for order 302268
+Cook(2) finished meal 85 for order 302268
+Meal 89 for order 302268 is cooking
+Cook(6) preparing meal 99 for order 302268
+Cook(8) finished meal 86 for order 302268
+Meal 90 for order 302268 is cooking
+Cook(7) preparing meal 100 for order 302268
+Cook(1) finished meal 83 for order 302268
+Delivery person(2) delivering meal 85 for order 302268
+Delivery person(2) delivering meal 86 for order 302268
+Cook(4) finished meal 84 for order 302268
+Meal 91 for order 302268 is cooking
+Cook(3) preparing meal 101 for order 302268
+Meal 92 for order 302268 is cooking
+Cook(5) preparing meal 102 for order 302268
+Cook(10) finished meal 88 for order 302268
+Delivery person(2) delivering meal 83 for order 302268
+Cook(9) finished meal 87 for order 302268
+Delivery person(1) delivering meal 84 for order 302268
+Cook(6) finished meal 89 for order 302268
+Meal 93 for order 302268 is cooking
+Cook(2) preparing meal 103 for order 302268
+Delivery person(1) delivering meal 88 for order 302268
+Cook(7) finished meal 90 for order 302268
+Meal 95 for order 302268 is cooking
+Cook(8) preparing meal 104 for order 302268
+Meal 94 for order 302268 is cooking
+Cook(1) preparing meal 105 for order 302268
+Delivery person(1) delivering meal 87 for order 302268
+Meal 97 for order 302268 is cooking
+Cook(9) preparing meal 106 for order 302268
+Cook(3) finished meal 91 for order 302268
+Delivery person(4) delivering meal 89 for order 302268
+Meal 96 for order 302268 is cooking
+Cook(4) preparing meal 107 for order 302268
+Meal 99 for order 302268 is cooking
+Cook(6) preparing meal 108 for order 302268
+Cook(5) finished meal 92 for order 302268
+Delivery person(4) delivering meal 90 for order 302268
+Delivery person(4) delivering meal 91 for order 302268
+Cook(2) finished meal 93 for order 302268
+Meal 100 for order 302268 is cooking
+Cook(7) preparing meal 109 for order 302268
+Cook(8) finished meal 95 for order 302268
+Delivery person(5) delivering meal 92 for order 302268
+Meal 101 for order 302268 is cooking
+Cook(3) preparing meal 110 for order 302268
+Meal 98 for order 302268 is cooking
+Cook(10) preparing meal 111 for order 302268
+Cook(1) finished meal 94 for order 302268
+Cook(9) finished meal 97 for order 302268
+Delivery person(5) delivering meal 93 for order 302268
+Delivery person(5) delivering meal 95 for order 302268
+Cook(6) finished meal 99 for order 302268
+Delivery person(3) delivering meal 94 for order 302268
+Delivery person(3) delivering meal 97 for order 302268
+Delivery person(3) delivering meal 99 for order 302268
+Meal 103 for order 302268 is cooking
+Cook(2) preparing meal 112 for order 302268
+Meal 102 for order 302268 is cooking
+Cook(5) preparing meal 113 for order 302268
+Cook(4) finished meal 96 for order 302268
+Cook(3) finished meal 101 for order 302268
+Cook(7) finished meal 100 for order 302268
+Delivery person(2) delivering meal 96 for order 302268
+Meal 104 for order 302268 is cooking
+Cook(8) preparing meal 114 for order 302268
+Meal 105 for order 302268 is cooking
+Cook(1) preparing meal 115 for order 302268
+Meal 106 for order 302268 is cooking
+Cook(9) preparing meal 116 for order 302268
+Delivery person(2) delivering meal 101 for order 302268
+Meal 107 for order 302268 is cooking
+Cook(4) preparing meal 117 for order 302268
+Cook(10) finished meal 98 for order 302268
+Delivery person(2) delivering meal 100 for order 302268
+Cook(2) finished meal 103 for order 302268
+Meal 108 for order 302268 is cooking
+Cook(6) preparing meal 118 for order 302268
+Cook(5) finished meal 102 for order 302268
+Delivery person(1) delivering meal 98 for order 302268
+Delivery person(1) delivering meal 103 for order 302268
+Meal 110 for order 302268 is cooking
+Cook(8) finished meal 104 for order 302268
+Cook(3) preparing meal 119 for order 302268
+Meal 109 for order 302268 is cooking
+Cook(7) preparing meal 120 for order 302268
+Meal 111 for order 302268 is cooking
+Cook(10) preparing meal 0 for order 303009
+Cook(9) finished meal 106 for order 302268
+Delivery person(1) delivering meal 102 for order 302268
+Cook(4) finished meal 107 for order 302268
+Delivery person(4) delivering meal 104 for order 302268
+Cook(1) finished meal 105 for order 302268
+Meal 112 for order 302268 is cooking
+Cook(2) preparing meal 1 for order 303009
+Delivery person(4) delivering meal 106 for order 302268
+Delivery person(4) delivering meal 107 for order 302268
+Meal 114 for order 302268 is cooking
+Cook(8) preparing meal 2 for order 303009
+Meal 113 for order 302268 is cooking
+Cook(5) preparing meal 3 for order 303009
+Cook(6) finished meal 108 for order 302268
+Cook(3) finished meal 110 for order 302268
+Delivery person(3) delivering meal 105 for order 302268
+Delivery person(3) delivering meal 108 for order 302268
+Cook(10) finished meal 111 for order 302268
+Cook(7) finished meal 109 for order 302268
+Cook(2) finished meal 112 for order 302268
+Delivery person(5) delivering meal 111 for order 302268
+Meal 115 for order 302268 is cooking
+Cook(1) preparing meal 4 for order 303009
+Meal 117 for order 302268 is cooking
+Cook(4) preparing meal 5 for order 303009
+Delivery person(3) delivering meal 110 for order 302268
+Meal 116 for order 302268 is cooking
+Cook(9) preparing meal 6 for order 303009
+Delivery person(5) delivering meal 109 for order 302268
+Delivery person(5) delivering meal 112 for order 302268
+Cook(8) finished meal 114 for order 302268
+Meal 0 for order 303009 is cooking
+Cook(10) preparing meal 7 for order 303009
+Meal 120 for order 302268 is cooking
+Cook(7) preparing meal 8 for order 303009
+Cook(5) finished meal 113 for order 302268
+Meal 119 for order 302268 is cooking
+Cook(3) preparing meal 9 for order 303009
+Meal 118 for order 302268 is cooking
+Cook(6) preparing meal 10 for order 303009
+Cook(4) finished meal 117 for order 302268
+Delivery person(2) delivering meal 114 for order 302268
+Cook(1) finished meal 115 for order 302268
+Cook(9) finished meal 116 for order 302268
+Delivery person(2) delivering meal 113 for order 302268
+Meal 2 for order 303009 is cooking
+Cook(8) preparing meal 11 for order 303009
+Meal 1 for order 303009 is cooking
+Cook(2) preparing meal 12 for order 303009
+Cook(10) finished meal 0 for order 303009
+Delivery person(1) delivering meal 115 for order 302268
+Delivery person(1) delivering meal 116 for order 302268
+Delivery person(1) delivering meal 0 for order 303009
+Meal 3 for order 303009 is cooking
+Cook(5) preparing meal 13 for order 303009
+Cook(7) finished meal 120 for order 302268
+Cook(3) finished meal 119 for order 302268
+Delivery person(2) delivering meal 117 for order 302268
+Meal 4 for order 303009 is cooking
+Cook(1) preparing meal 14 for order 303009
+Cook(6) finished meal 118 for order 302268
+Delivery person(4) delivering meal 120 for order 302268
+Meal 5 for order 303009 is cooking
+Cook(4) preparing meal 15 for order 303009
+Cook(8) finished meal 2 for order 303009
+Meal 8 for order 303009 is cooking
+Cook(7) preparing meal 16 for order 303009
+Meal 6 for order 303009 is cooking
+Cook(9) preparing meal 17 for order 303009
+Delivery person(4) delivering meal 119 for order 302268
+Cook(5) finished meal 3 for order 303009
+Meal 7 for order 303009 is cooking
+Cook(10) preparing meal 18 for order 303009
+Cook(2) finished meal 1 for order 303009
+Delivery person(3) delivering meal 2 for order 303009
+Delivery person(3) delivering meal 3 for order 303009
+Delivery person(3) delivering meal 1 for order 303009
+Delivery person(4) delivering meal 118 for order 302268
+Meal 10 for order 303009 is cooking
+Meal 9 for order 303009 is cooking
+Cook(1) finished meal 4 for order 303009
+Cook(7) finished meal 8 for order 303009
+Cook(4) finished meal 5 for order 303009
+Delivery person(5) delivering meal 4 for order 303009
+Cook(9) finished meal 6 for order 303009
+Meal 12 for order 303009 is cooking
+Meal 13 for order 303009 is cooking
+Cook(10) finished meal 7 for order 303009
+Delivery person(5) delivering meal 8 for order 303009
+Meal 11 for order 303009 is cooking
+Cook(6) finished meal 10 for order 303009
+Delivery person(1) delivering meal 6 for order 303009
+Delivery person(5) delivering meal 5 for order 303009
+Delivery person(1) delivering meal 7 for order 303009
+Meal 14 for order 303009 is cooking
+Cook(3) finished meal 9 for order 303009
+Meal 18 for order 303009 is cooking
+Delivery person(1) delivering meal 10 for order 303009
+Meal 16 for order 303009 is cooking
+Meal 17 for order 303009 is cooking
+Cook(5) finished meal 13 for order 303009
+Cook(2) finished meal 12 for order 303009
+Delivery person(2) delivering meal 9 for order 303009
+Meal 15 for order 303009 is cooking
+Delivery person(2) delivering meal 13 for order 303009
+Delivery person(2) delivering meal 12 for order 303009
+Cook(8) finished meal 11 for order 303009
+Cook(1) finished meal 14 for order 303009
+Cook(10) finished meal 18 for order 303009
+Delivery person(4) delivering meal 11 for order 303009
+Cook(7) finished meal 16 for order 303009
+Cook(9) finished meal 17 for order 303009
+Delivery person(4) delivering meal 14 for order 303009
+Cook(4) finished meal 15 for order 303009
+Delivery person(3) delivering meal 16 for order 303009
+Delivery person(4) delivering meal 18 for order 303009
+Delivery person(3) delivering meal 17 for order 303009
+Delivery person(3) delivering meal 15 for order 303009
+SIGINT caught, shutting down server...
+PideShop active, waiting for connection...
+Connection established with client
+Meals received and added to queue
+Cook(9) preparing meal 0 for order 305708
+Cook(5) preparing meal 1 for order 305708
+Cook(2) preparing meal 2 for order 305708
+Cook(7) preparing meal 3 for order 305708
+Cook(4) preparing meal 5 for order 305708
+Cook(1) preparing meal 4 for order 305708
+Cook(8) preparing meal 6 for order 305708
+Cook(6) preparing meal 8 for order 305708
+Cook(3) preparing meal 9 for order 305708
+Cook(10) preparing meal 7 for order 305708
+Meal 2 for order 305708 is cooking
+Cook(2) preparing meal 10 for order 305708
+Meal 0 for order 305708 is cooking
+Cook(9) preparing meal 11 for order 305708
+Meal 1 for order 305708 is cooking
+Cook(5) preparing meal 12 for order 305708
+Meal 6 for order 305708 is cooking
+Cook(8) preparing meal 13 for order 305708
+Meal 8 for order 305708 is cooking
+Cook(6) preparing meal 14 for order 305708
+Meal 4 for order 305708 is cooking
+Cook(1) preparing meal 15 for order 305708
+Connection established with client
+Order canceled, PID 305708
+Connection established with client
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...
+SIGINT caught, shutting down server...

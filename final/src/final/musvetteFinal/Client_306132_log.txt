@@ -1,0 +1,125 @@
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+  Meal 1:
+    Order PID: 306132
+    Meal ID: 0
+    Coordinates: (5.89, 7.93)
+    Status: PLACED
+  Meal 2:
+    Order PID: 306132
+    Meal ID: 1
+    Coordinates: (3.33, 6.23)
+    Status: PLACED
+  Meal 3:
+    Order PID: 306132
+    Meal ID: 2
+    Coordinates: (3.87, 5.44)
+    Status: PLACED
+  Meal 4:
+    Order PID: 306132
+    Meal ID: 3
+    Coordinates: (7.79, 2.39)
+    Status: PLACED
+  Meal 5:
+    Order PID: 306132
+    Meal ID: 4
+    Coordinates: (3.31, 2.69)
+    Status: PLACED
+  Meal 6:
+    Order PID: 306132
+    Meal ID: 5
+    Coordinates: (6.30, 7.35)
+    Status: PLACED
+  Meal 7:
+    Order PID: 306132
+    Meal ID: 6
+    Coordinates: (1.52, 0.04)
+    Status: PLACED
+  Meal 8:
+    Order PID: 306132
+    Meal ID: 7
+    Coordinates: (1.38, 1.70)
+    Status: PLACED
+  Meal 9:
+    Order PID: 306132
+    Meal ID: 8
+    Coordinates: (2.52, 1.32)
+    Status: PLACED
+  Meal 10:
+    Order PID: 306132
+    Meal ID: 9
+    Coordinates: (4.77, 0.73)
+    Status: PLACED
+  Meal 11:
+    Order PID: 306132
+    Meal ID: 10
+    Coordinates: (4.49, 7.19)
+    Status: PLACED
+  Meal 12:
+    Order PID: 306132
+    Meal ID: 11
+    Coordinates: (4.79, 4.55)
+    Status: PLACED
+  Meal 13:
+    Order PID: 306132
+    Meal ID: 12
+    Coordinates: (5.70, 5.62)
+    Status: PLACED
+  Meal 14:
+    Order PID: 306132
+    Meal ID: 13
+    Coordinates: (4.31, 0.45)
+    Status: PLACED
+  Meal 15:
+    Order PID: 306132
+    Meal ID: 14
+    Coordinates: (0.13, 7.20)
+    Status: PLACED
+  Meal 16:
+    Order PID: 306132
+    Meal ID: 15
+    Coordinates: (4.20, 2.37)
+    Status: PLACED
+  Meal 17:
+    Order PID: 306132
+    Meal ID: 16
+    Coordinates: (7.13, 7.53)
+    Status: PLACED
+  Meal 18:
+    Order PID: 306132
+    Meal ID: 17
+    Coordinates: (0.60, 7.35)
+    Status: PLACED
+  Meal 19:
+    Order PID: 306132
+    Meal ID: 18
+    Coordinates: (4.97, 4.74)
+    Status: PLACED
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+  Meal 1:
+    Order PID: 306132
+    Meal ID: -1
+    Coordinates: (0.00, 0.00)
+    Status: CANCELED
+^C signal .. cancelling orders.. editing log..
