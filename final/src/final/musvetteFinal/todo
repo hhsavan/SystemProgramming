@@ -1,7 +1,6 @@
 
 
 - effieency. en çok çalışanların adları yazılacak
-7- log
 
 
 
@@ -11,9 +10,11 @@
 
 sigaction doğru kullanımı
 VALGRINDDDD
-
+500x500
+server socket kapatma
 
 yapııldı:
+7- log
 3- ctrl c (server, client)
 2- deliivery karşı tarafa ulaşma hızı 
 - delivery 3 ve  3ü katı kadar alır ve ulaşınca cliente bilgi gitmesi

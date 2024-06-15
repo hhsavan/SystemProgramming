@@ -1,0 +1,166 @@
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+  Meal 1:
+    Order PID: 283541
+    Meal ID: 0
+    Coordinates: (4.04, 3.20)
+    Status: PLACED
+  Meal 2:
+    Order PID: 283541
+    Meal ID: 1
+    Coordinates: (2.82, 0.86)
+    Status: PLACED
+  Meal 3:
+    Order PID: 283541
+    Meal ID: 2
+    Coordinates: (0.24, 2.93)
+    Status: PLACED
+  Meal 4:
+    Order PID: 283541
+    Meal ID: 3
+    Coordinates: (2.77, 6.68)
+    Status: PLACED
+  Meal 5:
+    Order PID: 283541
+    Meal ID: 4
+    Coordinates: (7.93, 4.75)
+    Status: PLACED
+  Meal 6:
+    Order PID: 283541
+    Meal ID: 5
+    Coordinates: (7.87, 4.28)
+    Status: PLACED
+  Meal 7:
+    Order PID: 283541
+    Meal ID: 6
+    Coordinates: (6.49, 5.42)
+    Status: PLACED
+  Meal 8:
+    Order PID: 283541
+    Meal ID: 7
+    Coordinates: (2.63, 5.57)
+    Status: PLACED
+  Meal 9:
+    Order PID: 283541
+    Meal ID: 8
+    Coordinates: (1.27, 2.90)
+    Status: PLACED
+  Meal 10:
+    Order PID: 283541
+    Meal ID: 9
+    Coordinates: (2.94, 3.32)
+    Status: PLACED
+  Meal 11:
+    Order PID: 283541
+    Meal ID: 10
+    Coordinates: (1.51, 7.12)
+    Status: PLACED
+  Meal 12:
+    Order PID: 283541
+    Meal ID: 11
+    Coordinates: (4.90, 2.56)
+    Status: PLACED
+  Meal 13:
+    Order PID: 283541
+    Meal ID: 12
+    Coordinates: (5.33, 0.96)
+    Status: PLACED
+  Meal 14:
+    Order PID: 283541
+    Meal ID: 13
+    Coordinates: (6.96, 5.40)
+    Status: PLACED
+  Meal 15:
+    Order PID: 283541
+    Meal ID: 14
+    Coordinates: (1.62, 2.21)
+    Status: PLACED
+  Meal 16:
+    Order PID: 283541
+    Meal ID: 15
+    Coordinates: (2.32, 5.65)
+    Status: PLACED
+  Meal 17:
+    Order PID: 283541
+    Meal ID: 16
+    Coordinates: (5.41, 1.49)
+    Status: PLACED
+Meal 8 for order 283541 updated to status PREPARED
+Meal 3 for order 283541 updated to status PREPARED
+Meal 9 for order 283541 updated to status PREPARED
+Meal 5 for order 283541 updated to status PREPARED
+Meal 6 for order 283541 updated to status PREPARED
+Meal 7 for order 283541 updated to status PREPARED
+Meal 0 for order 283541 updated to status PREPARED
+Meal 1 for order 283541 updated to status PREPARED
+Meal 2 for order 283541 updated to status PREPARED
+Meal 4 for order 283541 updated to status PREPARED
+Meal 8 for order 283541 updated to status COOKED
+Meal 3 for order 283541 updated to status COOKED
+Meal 9 for order 283541 updated to status COOKED
+Meal 8 for order 283541 updated to status IN_DELIVERY
+Meal 5 for order 283541 updated to status COOKED
+Meal 10 for order 283541 updated to status PREPARED
+Meal 6 for order 283541 updated to status COOKED
+Meal 7 for order 283541 updated to status COOKED
+Meal 5 for order 283541 updated to status IN_DELIVERY
+Meal 8 for order 283541 updated to status DELIVERED
+Meal 3 for order 283541 updated to status IN_DELIVERY
+Meal 12 for order 283541 updated to status PREPARED
+Meal 13 for order 283541 updated to status PREPARED
+Meal 11 for order 283541 updated to status PREPARED
+Meal 5 for order 283541 updated to status DELIVERED
+Meal 6 for order 283541 updated to status IN_DELIVERY
+Meal 3 for order 283541 updated to status DELIVERED
+Meal 9 for order 283541 updated to status IN_DELIVERY
+Meal 9 for order 283541 updated to status DELIVERED
+Meal 14 for order 283541 updated to status PREPARED
+Meal 10 for order 283541 updated to status COOKED
+Meal 6 for order 283541 updated to status DELIVERED
+Meal 7 for order 283541 updated to status IN_DELIVERY
+Meal 7 for order 283541 updated to status DELIVERED
+Meal 15 for order 283541 updated to status PREPARED
+Meal 0 for order 283541 updated to status COOKED
+Meal 12 for order 283541 updated to status COOKED
+Meal 10 for order 283541 updated to status IN_DELIVERY
+Meal 1 for order 283541 updated to status COOKED
+Meal 2 for order 283541 updated to status COOKED
+Meal 4 for order 283541 updated to status COOKED
+Meal 1 for order 283541 updated to status IN_DELIVERY
+Meal 10 for order 283541 updated to status DELIVERED
+Meal 0 for order 283541 updated to status IN_DELIVERY
+Meal 0 for order 283541 updated to status DELIVERED
+Meal 12 for order 283541 updated to status IN_DELIVERY
+Meal 1 for order 283541 updated to status DELIVERED
+Meal 2 for order 283541 updated to status IN_DELIVERY
+Meal 13 for order 283541 updated to status COOKED
+Meal 12 for order 283541 updated to status DELIVERED
+Meal 16 for order 283541 updated to status PREPARED
+Meal 11 for order 283541 updated to status COOKED
+Meal 2 for order 283541 updated to status DELIVERED
+Meal 4 for order 283541 updated to status IN_DELIVERY
+Meal 14 for order 283541 updated to status COOKED
+Meal 13 for order 283541 updated to status IN_DELIVERY
+Meal 15 for order 283541 updated to status COOKED
+Meal 4 for order 283541 updated to status DELIVERED
+Meal 13 for order 283541 updated to status DELIVERED
+Meal 11 for order 283541 updated to status IN_DELIVERY
+Meal 11 for order 283541 updated to status DELIVERED
+Meal 14 for order 283541 updated to status IN_DELIVERY
+Meal 14 for order 283541 updated to status DELIVERED
+Meal 16 for order 283541 updated to status COOKED
+Meal 15 for order 283541 updated to status IN_DELIVERY
+Meal 15 for order 283541 updated to status DELIVERED
+Meal 16 for order 283541 updated to status IN_DELIVERY
+Meal 16 for order 283541 updated to status DELIVERED
+All customers served
