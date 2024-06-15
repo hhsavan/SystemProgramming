@@ -23,11 +23,11 @@ all: $(TARGETS)
 
 # Build server
 PideShop: $(SERVER_OBJ)
-	$(CC) $(CFLAGS) $(INCLUDES) -o server $(SERVER_OBJ) -lm
+	$(CC) $(CFLAGS) $(INCLUDES) -o PideShop $(SERVER_OBJ) -lm
 
 # Build client
 HungryVeryMuch: $(CLIENT_OBJ)
-	$(CC) $(CFLAGS) $(INCLUDES) -o client $(CLIENT_OBJ)
+	$(CC) $(CFLAGS) $(INCLUDES) -o HungryVeryMuch $(CLIENT_OBJ)
 
 # # Compile server source files
 # server.o: server.c helper.h

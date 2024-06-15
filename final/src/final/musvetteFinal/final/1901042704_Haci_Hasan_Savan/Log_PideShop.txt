@@ -1,0 +1,168 @@
+PideShop active, waiting for connection...
+Connection established with client
+Meals received and added to queue
+Cook(1) preparing meal 0 for order 336168
+Cook(12) preparing meal 1 for order 336168
+Cook(8) preparing meal 2 for order 336168
+Cook(10) preparing meal 3 for order 336168
+Cook(13) preparing meal 4 for order 336168
+Cook(9) preparing meal 5 for order 336168
+Cook(7) preparing meal 9 for order 336168
+Cook(5) preparing meal 7 for order 336168
+Cook(11) preparing meal 12 for order 336168
+Cook(4) preparing meal 8 for order 336168
+Cook(6) preparing meal 13 for order 336168
+Meal 0 for order 336168 is cooking
+Cook(1) preparing meal 14 for order 336168
+Meal 1 for order 336168 is cooking
+Cook(12) preparing meal 15 for order 336168
+Meal 2 for order 336168 is cooking
+Cook(8) preparing meal 16 for order 336168
+Cook(1) finished meal 0 for order 336168
+Meal 5 for order 336168 is cooking
+Cook(9) preparing meal 17 for order 336168
+Cook(12) finished meal 1 for order 336168
+Cook(8) finished meal 2 for order 336168
+Delivery person(1) delivering meal 0 for order 336168
+Meal 4 for order 336168 is cooking
+Cook(13) preparing meal 18 for order 336168
+Cook(18) preparing meal 10 for order 336168
+Cook(2) preparing meal 6 for order 336168
+Meal 7 for order 336168 is cooking
+Meal 8 for order 336168 is cooking
+Cook(5) preparing meal 20 for order 336168
+Cook(4) preparing meal 21 for order 336168
+Cook(3) preparing meal 11 for order 336168
+Cook(14) preparing meal 19 for order 336168
+Meal 14 for order 336168 is cooking
+Cook(9) finished meal 5 for order 336168
+Cook(5) finished meal 7 for order 336168
+Meal 15 for order 336168 is cooking
+Cook(13) finished meal 4 for order 336168
+Meal 3 for order 336168 is cooking
+Cook(19) preparing meal 23 for order 336168
+Cook(10) preparing meal 24 for order 336168
+Delivery person(2) delivering meal 5 for order 336168
+Cook(20) preparing meal 25 for order 336168
+Cook(15) preparing meal 26 for order 336168
+Cook(4) finished meal 8 for order 336168
+Cook(12) preparing meal 29 for order 336168
+Cook(16) preparing meal 27 for order 336168
+Cook(1) preparing meal 28 for order 336168
+Meal 16 for order 336168 is cooking
+Cook(8) preparing meal 30 for order 336168
+Cook(17) preparing meal 22 for order 336168
+Cook(1) finished meal 14 for order 336168
+Cook(12) finished meal 15 for order 336168
+Delivery person(3) delivering meal 8 for order 336168
+Meal 6 for order 336168 is cooking
+Cook(2) preparing meal 31 for order 336168
+Meal 17 for order 336168 is cooking
+Cook(9) preparing meal 32 for order 336168
+Meal 20 for order 336168 is cooking
+Cook(5) preparing meal 33 for order 336168
+Meal 21 for order 336168 is cooking
+Cook(4) preparing meal 34 for order 336168
+Cook(5) finished meal 20 for order 336168
+Meal 23 for order 336168 is cooking
+Cook(19) preparing meal 35 for order 336168
+Cook(2) finished meal 6 for order 336168
+Meal 28 for order 336168 is cooking
+Cook(1) preparing meal 36 for order 336168
+Cook(8) finished meal 16 for order 336168
+Cook(4) finished meal 21 for order 336168
+Meal 26 for order 336168 is cooking
+Cook(15) preparing meal 37 for order 336168
+Cook(10) finished meal 3 for order 336168
+Meal 31 for order 336168 is cooking
+Cook(2) preparing meal 38 for order 336168
+Cook(19) finished meal 23 for order 336168
+Meal 24 for order 336168 is cooking
+Cook(10) preparing meal 39 for order 336168
+Cook(15) finished meal 26 for order 336168
+Meal 9 for order 336168 is cooking
+Cook(7) preparing meal 40 for order 336168
+Meal 37 for order 336168 is cooking
+Cook(15) preparing meal 41 for order 336168
+Meal 35 for order 336168 is cooking
+Delivery person(4) delivering meal 21 for order 336168
+Delivery person(5) delivering meal 20 for order 336168
+Meal 18 for order 336168 is cooking
+Delivery person(5) delivering meal 6 for order 336168
+Delivery person(5) delivering meal 16 for order 336168
+Meal 33 for order 336168 is cooking
+Cook(2) finished meal 31 for order 336168
+Cook(15) finished meal 37 for order 336168
+Meal 40 for order 336168 is cooking
+Meal 30 for order 336168 is cooking
+Cook(5) finished meal 33 for order 336168
+Cook(7) finished meal 40 for order 336168
+Cook(19) finished meal 35 for order 336168
+Meal 34 for order 336168 is cooking
+Cook(1) finished meal 28 for order 336168
+Cook(13) finished meal 18 for order 336168
+Meal 10 for order 336168 is cooking
+Cook(9) finished meal 17 for order 336168
+Meal 13 for order 336168 is cooking
+Cook(4) finished meal 34 for order 336168
+Meal 39 for order 336168 is cooking
+Meal 22 for order 336168 is cooking
+Cook(10) finished meal 39 for order 336168
+Cook(8) finished meal 30 for order 336168
+Meal 11 for order 336168 is cooking
+Meal 29 for order 336168 is cooking
+Cook(18) finished meal 10 for order 336168
+Meal 25 for order 336168 is cooking
+Cook(6) finished meal 13 for order 336168
+Meal 27 for order 336168 is cooking
+Cook(17) finished meal 22 for order 336168
+Meal 12 for order 336168 is cooking
+Meal 19 for order 336168 is cooking
+Cook(20) finished meal 25 for order 336168
+Cook(3) finished meal 11 for order 336168
+Cook(12) finished meal 29 for order 336168
+Cook(16) finished meal 27 for order 336168
+Cook(11) finished meal 12 for order 336168
+Cook(14) finished meal 19 for order 336168
+Delivery person(1) delivering meal 1 for order 336168
+Delivery person(1) delivering meal 2 for order 336168
+Delivery person(2) delivering meal 7 for order 336168
+Delivery person(3) delivering meal 14 for order 336168
+Delivery person(5) delivering meal 26 for order 336168
+Delivery person(5) delivering meal 31 for order 336168
+Meal 38 for order 336168 is cooking
+Meal 41 for order 336168 is cooking
+Cook(15) finished meal 41 for order 336168
+Cook(2) finished meal 38 for order 336168
+Delivery person(2) delivering meal 4 for order 336168
+Delivery person(4) delivering meal 3 for order 336168
+Delivery person(5) delivering meal 37 for order 336168
+Meal 36 for order 336168 is cooking
+Meal 32 for order 336168 is cooking
+Delivery person(3) delivering meal 15 for order 336168
+Cook(9) finished meal 32 for order 336168
+Cook(1) finished meal 36 for order 336168
+Delivery person(1) delivering meal 40 for order 336168
+Delivery person(3) delivering meal 18 for order 336168
+Delivery person(5) delivering meal 30 for order 336168
+Delivery person(2) delivering meal 13 for order 336168
+Delivery person(4) delivering meal 23 for order 336168
+Delivery person(1) delivering meal 35 for order 336168
+Delivery person(3) delivering meal 34 for order 336168
+Delivery person(5) delivering meal 39 for order 336168
+Delivery person(5) delivering meal 10 for order 336168
+Delivery person(2) delivering meal 11 for order 336168
+Delivery person(3) delivering meal 28 for order 336168
+Delivery person(2) delivering meal 25 for order 336168
+Delivery person(4) delivering meal 29 for order 336168
+Delivery person(4) delivering meal 32 for order 336168
+Delivery person(1) delivering meal 17 for order 336168
+Delivery person(1) delivering meal 22 for order 336168
+Delivery person(3) delivering meal 27 for order 336168
+Delivery person(4) delivering meal 36 for order 336168
+Delivery person(1) delivering meal 19 for order 336168
+Delivery person(3) delivering meal 12 for order 336168
+Delivery person(1) delivering meal 33 for order 336168
+Delivery person(3) delivering meal 38 for order 336168
+SIGINT caught, shutting down server...
+Thanks Cook 1 Moto 1

@@ -1,0 +1,384 @@
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+Order ID: 0
+
+  Meal 1:
+    Order PID: 336168
+    Meal ID: 0
+    Coordinates: (1.07, 2.25)
+    Status: PLACED
+  Meal 2:
+    Order PID: 336168
+    Meal ID: 1
+    Coordinates: (4.62, 3.12)
+    Status: PLACED
+  Meal 3:
+    Order PID: 336168
+    Meal ID: 2
+    Coordinates: (8.79, 0.37)
+    Status: PLACED
+  Meal 4:
+    Order PID: 336168
+    Meal ID: 3
+    Coordinates: (0.03, 7.76)
+    Status: PLACED
+  Meal 5:
+    Order PID: 336168
+    Meal ID: 4
+    Coordinates: (9.86, 1.65)
+    Status: PLACED
+  Meal 6:
+    Order PID: 336168
+    Meal ID: 5
+    Coordinates: (6.02, 9.68)
+    Status: PLACED
+  Meal 7:
+    Order PID: 336168
+    Meal ID: 6
+    Coordinates: (7.39, 4.54)
+    Status: PLACED
+  Meal 8:
+    Order PID: 336168
+    Meal ID: 7
+    Coordinates: (0.92, 2.45)
+    Status: PLACED
+  Meal 9:
+    Order PID: 336168
+    Meal ID: 8
+    Coordinates: (0.73, 5.67)
+    Status: PLACED
+  Meal 10:
+    Order PID: 336168
+    Meal ID: 9
+    Coordinates: (9.34, 1.70)
+    Status: PLACED
+  Meal 11:
+    Order PID: 336168
+    Meal ID: 10
+    Coordinates: (1.29, 9.73)
+    Status: PLACED
+  Meal 12:
+    Order PID: 336168
+    Meal ID: 11
+    Coordinates: (7.19, 1.98)
+    Status: PLACED
+  Meal 13:
+    Order PID: 336168
+    Meal ID: 12
+    Coordinates: (1.83, 8.37)
+    Status: PLACED
+  Meal 14:
+    Order PID: 336168
+    Meal ID: 13
+    Coordinates: (2.33, 2.79)
+    Status: PLACED
+  Meal 15:
+    Order PID: 336168
+    Meal ID: 14
+    Coordinates: (7.57, 9.54)
+    Status: PLACED
+  Meal 16:
+    Order PID: 336168
+    Meal ID: 15
+    Coordinates: (2.66, 4.99)
+    Status: PLACED
+  Meal 17:
+    Order PID: 336168
+    Meal ID: 16
+    Coordinates: (8.15, 3.63)
+    Status: PLACED
+  Meal 18:
+    Order PID: 336168
+    Meal ID: 17
+    Coordinates: (4.46, 3.29)
+    Status: PLACED
+  Meal 19:
+    Order PID: 336168
+    Meal ID: 18
+    Coordinates: (0.35, 4.50)
+    Status: PLACED
+  Meal 20:
+    Order PID: 336168
+    Meal ID: 19
+    Coordinates: (1.05, 6.57)
+    Status: PLACED
+  Meal 21:
+    Order PID: 336168
+    Meal ID: 20
+    Coordinates: (6.15, 3.42)
+    Status: PLACED
+  Meal 22:
+    Order PID: 336168
+    Meal ID: 21
+    Coordinates: (6.25, 9.89)
+    Status: PLACED
+  Meal 23:
+    Order PID: 336168
+    Meal ID: 22
+    Coordinates: (7.96, 3.52)
+    Status: PLACED
+  Meal 24:
+    Order PID: 336168
+    Meal ID: 23
+    Coordinates: (8.69, 8.69)
+    Status: PLACED
+  Meal 25:
+    Order PID: 336168
+    Meal ID: 24
+    Coordinates: (9.19, 8.04)
+    Status: PLACED
+  Meal 26:
+    Order PID: 336168
+    Meal ID: 25
+    Coordinates: (0.39, 0.48)
+    Status: PLACED
+  Meal 27:
+    Order PID: 336168
+    Meal ID: 26
+    Coordinates: (4.12, 3.93)
+    Status: PLACED
+  Meal 28:
+    Order PID: 336168
+    Meal ID: 27
+    Coordinates: (8.81, 5.95)
+    Status: PLACED
+  Meal 29:
+    Order PID: 336168
+    Meal ID: 28
+    Coordinates: (2.31, 7.50)
+    Status: PLACED
+  Meal 30:
+    Order PID: 336168
+    Meal ID: 29
+    Coordinates: (5.09, 6.22)
+    Status: PLACED
+  Meal 31:
+    Order PID: 336168
+    Meal ID: 30
+    Coordinates: (3.39, 7.76)
+    Status: PLACED
+  Meal 32:
+    Order PID: 336168
+    Meal ID: 31
+    Coordinates: (1.22, 7.90)
+    Status: PLACED
+  Meal 33:
+    Order PID: 336168
+    Meal ID: 32
+    Coordinates: (7.74, 2.04)
+    Status: PLACED
+  Meal 34:
+    Order PID: 336168
+    Meal ID: 33
+    Coordinates: (1.19, 8.10)
+    Status: PLACED
+  Meal 35:
+    Order PID: 336168
+    Meal ID: 34
+    Coordinates: (6.53, 8.60)
+    Status: PLACED
+  Meal 36:
+    Order PID: 336168
+    Meal ID: 35
+    Coordinates: (1.01, 9.04)
+    Status: PLACED
+  Meal 37:
+    Order PID: 336168
+    Meal ID: 36
+    Coordinates: (2.02, 7.26)
+    Status: PLACED
+  Meal 38:
+    Order PID: 336168
+    Meal ID: 37
+    Coordinates: (5.28, 9.98)
+    Status: PLACED
+  Meal 39:
+    Order PID: 336168
+    Meal ID: 38
+    Coordinates: (0.79, 3.98)
+    Status: PLACED
+  Meal 40:
+    Order PID: 336168
+    Meal ID: 39
+    Coordinates: (5.03, 6.33)
+    Status: PLACED
+  Meal 41:
+    Order PID: 336168
+    Meal ID: 40
+    Coordinates: (8.37, 5.42)
+    Status: PLACED
+  Meal 42:
+    Order PID: 336168
+    Meal ID: 41
+    Coordinates: (3.16, 2.48)
+    Status: PLACED
+Meal 0 for order 336168 updated to status PREPARED
+Meal 1 for order 336168 updated to status PREPARED
+Meal 2 for order 336168 updated to status PREPARED
+Meal 0 for order 336168 updated to status COOKED
+Meal 5 for order 336168 updated to status PREPARED
+Meal 1 for order 336168 updated to status COOKED
+Meal 2 for order 336168 updated to status COOKED
+Meal 0 for order 336168 updated to status IN_DELIVERY
+Meal 4 for order 336168 updated to status PREPARED
+Meal 7 for order 336168 updated to status PREPARED
+Meal 8 for order 336168 updated to status PREPARED
+Meal 14 for order 336168 updated to status PREPARED
+Meal 15 for order 336168 updated to status PREPARED
+Meal 5 for order 336168 updated to status COOKED
+Meal 7 for order 336168 updated to status COOKED
+Meal 4 for order 336168 updated to status COOKED
+Meal 3 for order 336168 updated to status PREPARED
+Meal 5 for order 336168 updated to status IN_DELIVERY
+Meal 8 for order 336168 updated to status COOKED
+Meal 16 for order 336168 updated to status PREPARED
+Meal 14 for order 336168 updated to status COOKED
+Meal 15 for order 336168 updated to status COOKED
+Meal 20 for order 336168 updated to status PREPARED
+Meal 8 for order 336168 updated to status IN_DELIVERY
+Meal 6 for order 336168 updated to status PREPARED
+Meal 17 for order 336168 updated to status PREPARED
+Meal 16 for order 336168 updated to status COOKED
+Meal 21 for order 336168 updated to status PREPARED
+Meal 20 for order 336168 updated to status COOKED
+Meal 23 for order 336168 updated to status PREPARED
+Meal 18 for order 336168 updated to status PREPARED
+Meal 26 for order 336168 updated to status PREPARED
+Meal 28 for order 336168 updated to status PREPARED
+Meal 33 for order 336168 updated to status PREPARED
+Meal 10 for order 336168 updated to status PREPARED
+Meal 6 for order 336168 updated to status COOKED
+Meal 21 for order 336168 updated to status COOKED
+Meal 13 for order 336168 updated to status PREPARED
+Meal 34 for order 336168 updated to status PREPARED
+Meal 3 for order 336168 updated to status COOKED
+Meal 31 for order 336168 updated to status PREPARED
+Meal 12 for order 336168 updated to status PREPARED
+Meal 30 for order 336168 updated to status PREPARED
+Meal 23 for order 336168 updated to status COOKED
+Meal 24 for order 336168 updated to status PREPARED
+Meal 26 for order 336168 updated to status COOKED
+Meal 9 for order 336168 updated to status PREPARED
+Meal 37 for order 336168 updated to status PREPARED
+Meal 35 for order 336168 updated to status PREPARED
+Meal 20 for order 336168 updated to status IN_DELIVERY
+Meal 21 for order 336168 updated to status IN_DELIVERY
+Meal 31 for order 336168 updated to status COOKED
+Meal 20 for order 336168 updated to status DELIVERED
+Meal 6 for order 336168 updated to status IN_DELIVERY
+Meal 6 for order 336168 updated to status DELIVERED
+Meal 16 for order 336168 updated to status IN_DELIVERY
+Meal 39 for order 336168 updated to status PREPARED
+Meal 27 for order 336168 updated to status PREPARED
+Meal 37 for order 336168 updated to status COOKED
+Meal 40 for order 336168 updated to status PREPARED
+Meal 25 for order 336168 updated to status PREPARED
+Meal 22 for order 336168 updated to status PREPARED
+Meal 11 for order 336168 updated to status PREPARED
+Meal 29 for order 336168 updated to status PREPARED
+Meal 33 for order 336168 updated to status COOKED
+Meal 17 for order 336168 updated to status COOKED
+Meal 40 for order 336168 updated to status COOKED
+Meal 35 for order 336168 updated to status COOKED
+Meal 28 for order 336168 updated to status COOKED
+Meal 18 for order 336168 updated to status COOKED
+Meal 34 for order 336168 updated to status COOKED
+Meal 19 for order 336168 updated to status PREPARED
+Meal 39 for order 336168 updated to status COOKED
+Meal 30 for order 336168 updated to status COOKED
+Meal 10 for order 336168 updated to status COOKED
+Meal 13 for order 336168 updated to status COOKED
+Meal 22 for order 336168 updated to status COOKED
+Meal 29 for order 336168 updated to status COOKED
+Meal 25 for order 336168 updated to status COOKED
+Meal 11 for order 336168 updated to status COOKED
+Meal 27 for order 336168 updated to status COOKED
+Meal 12 for order 336168 updated to status COOKED
+Meal 19 for order 336168 updated to status COOKED
+Meal 0 for order 336168 updated to status DELIVERED
+Meal 1 for order 336168 updated to status IN_DELIVERY
+Meal 1 for order 336168 updated to status DELIVERED
+Meal 2 for order 336168 updated to status IN_DELIVERY
+Meal 5 for order 336168 updated to status DELIVERED
+Meal 7 for order 336168 updated to status IN_DELIVERY
+Meal 8 for order 336168 updated to status DELIVERED
+Meal 14 for order 336168 updated to status IN_DELIVERY
+Meal 16 for order 336168 updated to status DELIVERED
+Meal 26 for order 336168 updated to status IN_DELIVERY
+Meal 26 for order 336168 updated to status DELIVERED
+Meal 31 for order 336168 updated to status IN_DELIVERY
+Meal 38 for order 336168 updated to status PREPARED
+Meal 41 for order 336168 updated to status PREPARED
+Meal 41 for order 336168 updated to status COOKED
+Meal 38 for order 336168 updated to status COOKED
+Meal 7 for order 336168 updated to status DELIVERED
+Meal 4 for order 336168 updated to status IN_DELIVERY
+Meal 21 for order 336168 updated to status DELIVERED
+Meal 3 for order 336168 updated to status IN_DELIVERY
+Meal 31 for order 336168 updated to status DELIVERED
+Meal 37 for order 336168 updated to status IN_DELIVERY
+Meal 2 for order 336168 updated to status DELIVERED
+Meal 36 for order 336168 updated to status PREPARED
+Meal 32 for order 336168 updated to status PREPARED
+Meal 14 for order 336168 updated to status DELIVERED
+Meal 15 for order 336168 updated to status IN_DELIVERY
+Meal 15 for order 336168 updated to status DELIVERED
+Meal 37 for order 336168 updated to status DELIVERED
+Meal 32 for order 336168 updated to status COOKED
+Meal 36 for order 336168 updated to status COOKED
+Meal 40 for order 336168 updated to status IN_DELIVERY
+Meal 18 for order 336168 updated to status IN_DELIVERY
+Meal 30 for order 336168 updated to status IN_DELIVERY
+Meal 4 for order 336168 updated to status DELIVERED
+Meal 13 for order 336168 updated to status IN_DELIVERY
+Meal 3 for order 336168 updated to status DELIVERED
+Meal 23 for order 336168 updated to status IN_DELIVERY
+Meal 40 for order 336168 updated to status DELIVERED
+Meal 35 for order 336168 updated to status IN_DELIVERY
+Meal 18 for order 336168 updated to status DELIVERED
+Meal 34 for order 336168 updated to status IN_DELIVERY
+Meal 30 for order 336168 updated to status DELIVERED
+Meal 39 for order 336168 updated to status IN_DELIVERY
+Meal 39 for order 336168 updated to status DELIVERED
+Meal 10 for order 336168 updated to status IN_DELIVERY
+Meal 13 for order 336168 updated to status DELIVERED
+Meal 11 for order 336168 updated to status IN_DELIVERY
+Meal 34 for order 336168 updated to status DELIVERED
+Meal 28 for order 336168 updated to status IN_DELIVERY
+Meal 11 for order 336168 updated to status DELIVERED
+Meal 25 for order 336168 updated to status IN_DELIVERY
+Meal 23 for order 336168 updated to status DELIVERED
+Meal 29 for order 336168 updated to status IN_DELIVERY
+Meal 29 for order 336168 updated to status DELIVERED
+Meal 32 for order 336168 updated to status IN_DELIVERY
+Meal 35 for order 336168 updated to status DELIVERED
+Meal 17 for order 336168 updated to status IN_DELIVERY
+Meal 17 for order 336168 updated to status DELIVERED
+Meal 22 for order 336168 updated to status IN_DELIVERY
+Meal 28 for order 336168 updated to status DELIVERED
+Meal 10 for order 336168 updated to status DELIVERED
+Meal 27 for order 336168 updated to status IN_DELIVERY
+Meal 32 for order 336168 updated to status DELIVERED
+Meal 36 for order 336168 updated to status IN_DELIVERY
+Meal 22 for order 336168 updated to status DELIVERED
+Meal 19 for order 336168 updated to status IN_DELIVERY
+Meal 27 for order 336168 updated to status DELIVERED
+Meal 12 for order 336168 updated to status IN_DELIVERY
+Meal 25 for order 336168 updated to status DELIVERED
+Meal 36 for order 336168 updated to status DELIVERED
+Meal 19 for order 336168 updated to status DELIVERED
+Meal 33 for order 336168 updated to status IN_DELIVERY
+Meal 12 for order 336168 updated to status DELIVERED
+Meal 38 for order 336168 updated to status IN_DELIVERY
+Meal 33 for order 336168 updated to status DELIVERED
+Meal 38 for order 336168 updated to status DELIVERED
+Meal 9 for order 336168 updated to status SERVERDOWN
+PideShop is burned down. Server is down.
