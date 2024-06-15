@@ -7,18 +7,17 @@
 
 #define BUFFER_SIZE 1024
 
-typedef enum
-{
+typedef enum {
     PLACED,
     PREPARED,
     COOKED,
     IN_DELIVERY,
     DELIVERED,
-    CANCELED
+    CANCELED,
+    SERVERDOWN
 } MealStatus;
 
-typedef struct
-{
+typedef struct {
     int orderPid;
     int mealId;
     double x;
@@ -27,8 +26,7 @@ typedef struct
     int clientSocket;
 } Meal;
 
-typedef struct
-{
+typedef struct {
     int pid;
     int id;
     double townWidth;
@@ -42,10 +40,8 @@ int sockfd;
 int portnumber;
 Order order;
 
-const char *getStatusString(MealStatus status)
-{
-    switch (status)
-    {
+const char *getStatusString(MealStatus status) {
+    switch (status) {
     case PLACED:
         return "PLACED";
     case PREPARED:
@@ -58,20 +54,20 @@ const char *getStatusString(MealStatus status)
         return "DELIVERED";
     case CANCELED:
         return "CANCELED";
+    case SERVERDOWN:
+        return "SERVERDOWN";
     default:
         return "UNKNOWN";
     }
 }
 
-void printOrder(const Order *order)
-{
+void printOrder(const Order *order) {
     printf("Order ID: %d\n", order->id);
     printf("PID: %d\n", order->pid);
     printf("Town Width: %.2f, Town Height: %.2f\n", order->townWidth, order->townHeight);
     printf("Number of Meals: %d\n", order->numberOfMeals);
     printf("Client Socket: %d\n", order->clientSocket);
-    for (int i = 0; i < order->numberOfMeals; i++)
-    {
+    for (int i = 0; i < order->numberOfMeals; i++) {
         printf("  Meal %d:\n", i + 1);
         printf("    Order PID: %d\n", order->meals[i].orderPid);
         printf("    Meal ID: %d\n", order->meals[i].mealId);
@@ -80,13 +76,11 @@ void printOrder(const Order *order)
     }
 }
 
-int connect_to_server(int portnumber)
-{
+int connect_to_server(int portnumber) {
     int sockfd;
     struct sockaddr_in serv_addr;
 
-    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-    {
+    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
         perror("Socket creation error");
         exit(EXIT_FAILURE);
     }
@@ -95,8 +89,7 @@ int connect_to_server(int portnumber)
     serv_addr.sin_port = htons(portnumber);
     serv_addr.sin_addr.s_addr = INADDR_ANY;
 
-    if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
-    {
+    if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
         perror("Connection failed");
         exit(EXIT_FAILURE);
     }
@@ -104,8 +97,7 @@ int connect_to_server(int portnumber)
     return sockfd;
 }
 
-Order generate_order(double p, double q, int numberOfMeals)
-{
+Order generate_order(double p, double q, int numberOfMeals) {
     Order order;
     order.pid = getpid();
     order.id = 0;
@@ -116,8 +108,7 @@ Order generate_order(double p, double q, int numberOfMeals)
     order.meals = (Meal *)malloc(numberOfMeals * sizeof(Meal));
 
     srand(time(NULL)); // Seed with time to ensure different values
-    for (int i = 0; i < numberOfMeals; i++)
-    {
+    for (int i = 0; i < numberOfMeals; i++) {
         order.meals[i].orderPid = order.pid;
         order.meals[i].mealId = i;
         order.meals[i].x = (double)(rand() % (int)(p * 1000)) / 1000;
@@ -128,53 +119,50 @@ Order generate_order(double p, double q, int numberOfMeals)
     return order;
 }
 
-void send_order(int sockfd, Order *order)
-{
+void send_order(int sockfd, Order *order) {
     // Send the order header first
-    if (send(sockfd, order, sizeof(Order), 0) < 0)
-    {
+    if (send(sockfd, order, sizeof(Order), 0) < 0) {
         perror("Failed to send order header");
         return;
     }
 
     // Send the meals array
-    if (send(sockfd, order->meals, order->numberOfMeals * sizeof(Meal), 0) < 0)
-    {
+    if (send(sockfd, order->meals, order->numberOfMeals * sizeof(Meal), 0) < 0) {
         perror("Failed to send meals array");
     }
 
     printOrder(order); // Print the order after sending
 }
 
-void receive_updates(int sockfd, int numberOfMeals)
-{
+void receive_updates(int sockfd, int numberOfMeals) {
     Meal meal;
     int deliveredCount = 0;
-    while (1)
-    {
+    while (1) {
         int bytes_received = recv(sockfd, &meal, sizeof(Meal), 0);
-        if (bytes_received > 0)
-        {
+        if (bytes_received > 0) {
             printf("Meal %d for order %d updated to status %s\n", meal.mealId, meal.orderPid, getStatusString(meal.status));
-            if (meal.status == DELIVERED)
-            {
+            if (meal.status == DELIVERED) {
                 deliveredCount++;
-                if (deliveredCount == numberOfMeals)
-                {
+                if (deliveredCount == numberOfMeals) {
                     printf("All customers served\n");
                     break;
                 }
+            } else if (meal.status == SERVERDOWN) {
+                printf("PideShop is burned down. Server is down.\n");
+                break;
             }
-        }
-        else
-        {
+        } else {
             break;
         }
     }
 }
 
-void handle_signal(int sig)
-{
+void cleanup() {
+    close(sockfd);
+    free(order.meals);
+}
+
+void handle_signal(int sig) {
     Order cancelOrder;
     cancelOrder.pid = order.pid;
     cancelOrder.id = order.id;
@@ -193,13 +181,12 @@ void handle_signal(int sig)
     send_order(tempSockfd, &cancelOrder);
     free(cancelOrder.meals);
 
+    cleanup();
     exit(0);
 }
 
-int main(int argc, char *argv[])
-{
-    if (argc != 5)
-    {
+int main(int argc, char *argv[]) {
+    if (argc != 5) {
         fprintf(stderr, "Usage: %s [portnumber] [numberOfMeals] [p] [q]\n", argv[0]);
         exit(EXIT_FAILURE);
     }
@@ -218,8 +205,7 @@ int main(int argc, char *argv[])
 
     receive_updates(sockfd, numberOfMeals);
 
-    close(sockfd);
-    free(order.meals);
+    cleanup();
 
     return 0;
 }

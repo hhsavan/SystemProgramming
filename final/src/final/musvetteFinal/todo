@@ -1,8 +1,6 @@
 
-- effieency. en çok çalışanların adları yazılacak
-2- deliivery karşı tarafa ulaşma hızı 
 
-3- ctrl c (server, client)
+- effieency. en çok çalışanların adları yazılacak
 7- log
 
 
@@ -11,8 +9,13 @@
 8- ip-port muhabbeti
 9- test
 
+sigaction doğru kullanımı
+VALGRINDDDD
+
 
 yapııldı:
+3- ctrl c (server, client)
+2- deliivery karşı tarafa ulaşma hızı 
 - delivery 3 ve  3ü katı kadar alır ve ulaşınca cliente bilgi gitmesi
 6- bilgilerin tutulması ve karşı trafa gönderilmesi
 1- fırına 6dan fazla gidiyor mu????
