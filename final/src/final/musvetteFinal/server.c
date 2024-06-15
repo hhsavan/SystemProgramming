@@ -8,6 +8,7 @@
 #include <complex.h>
 #include <math.h>
 #include <time.h>
+#include <signal.h>
 #include "queue.h"
 #include "linkedlist.h"
 
@@ -22,7 +23,8 @@ typedef enum
     PREPARED,
     COOKED,
     IN_DELIVERY,
-    DELIVERED
+    DELIVERED,
+    CANCELED
 } MealStatus;
 
 typedef struct
@@ -80,6 +82,9 @@ typedef struct
     int meal_index;
 } DeliveryData;
 
+double shopX; // Assuming the shop is in the middle of the map (5/2, 5/2)
+double shopY;
+
 clock_t pseudoInverseMatrix(CookData *cookdata);
 
 pthread_mutex_t meals_mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -87,6 +92,7 @@ pthread_mutex_t oven_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t delivery_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t delivery_mutex_for_bag = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t cooked_meals_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t all_meals_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cook_cond = PTHREAD_COND_INITIALIZER;
 pthread_cond_t delivery_cond = PTHREAD_COND_INITIALIZER;
 sem_t meal_semaphore;
@@ -96,9 +102,15 @@ sem_t oven_door_semaphore;
 Queue *meals_queue;
 Queue *delivery_queue;
 LinkedList *oven_list;
+LinkedList *all_meals_list;
 
 int total_meals_received = 0;
 int total_meals_cooked = 0;
+int deliverySpeed = 0;
+
+void handle_sigpipe(int signum) {
+    printf("SIGPIPE caught\n");
+}
 
 void *phonethreadfunc(void *arg)
 {
@@ -170,38 +182,83 @@ void *phonethreadfunc(void *arg)
                 close(new_socket);
                 continue;
             }
+
             total_received += received;
         }
+        shopX = new_order->townWidth / 2;
+        shopY = new_order->townHeight / 2;
+        // Check if the order is a cancel order
+        // printf("new_order->meals[0].status: %d",new_order->meals[0].status);
+        if (new_order->meals[0].status == CANCELED)
+        {
 
-        // Enqueue each meal to the meals queue
+            pthread_mutex_lock(&all_meals_mutex);
+            ListNode *node = all_meals_list->head;
+            while (node != NULL)
+            {
+                // printf("while içi \n");
+                Meal *meal = (Meal *)node->data;
+                if (meal->orderPid == new_order->pid && meal->status != DELIVERED)
+                {
+                    // printf("DEGISTI\n");
+                    meal->status = CANCELED;
+                }
+                node = node->next;
+            }
+            pthread_mutex_unlock(&all_meals_mutex);
+            printf("order cancelled @YYY PID %d\n",new_order->pid);
+            free(new_order->meals);
+            free(new_order);
+            close(new_socket);
+            continue;
+        }
+
+        // Enqueue each meal to the meals queue and add to all meals list
         pthread_mutex_lock(&meals_mutex);
+        pthread_mutex_lock(&all_meals_mutex);
         for (int i = 0; i < new_order->numberOfMeals; i++)
         {
             new_order->meals[i].status = PLACED;
             new_order->meals[i].clientSocket = new_socket;
             enqueue(meals_queue, &new_order->meals[i]);
+            insertAtEnd(all_meals_list, &new_order->meals[i]);
             sem_post(&meal_semaphore);
             total_meals_received++;
         }
         printf("Meals received and added to queue\n");
+        pthread_mutex_unlock(&all_meals_mutex);
         pthread_mutex_unlock(&meals_mutex);
 
         free(new_order); // Free the order struct, but not the meals, as they are in the queue
     }
 }
 
+int safe_send(int client_socket, const void *buffer, size_t length, int flags)
+{
+    ssize_t bytes_sent = send(client_socket, buffer, length, flags);
+    if (bytes_sent < 0)
+    {
+        perror("Failed to send data");
+        return -1;
+    }
+    return 0;
+}
+
 void sendMealStatus(Meal *meal)
 {
-    if (send(meal->clientSocket, meal, sizeof(Meal), 0) < 0)
+    if (safe_send(meal->clientSocket, meal, sizeof(Meal), 0) < 0)
     {
-        perror("Failed to send meal status");
+        printf("Skipping sending meal status due to previous error.\n");
     }
 }
 
 void ovenFunc(Meal *meal, CookData *cook, int comingPurpose)
 {
+    
     if (comingPurpose == 0)
     { // If cook come to oven for putting
+    if(meal->status == CANCELED) return;
+
         sem_wait(&oven_semaphore);
         sem_wait(&oven_aperture_semaphore);
         sem_wait(&oven_door_semaphore);
@@ -220,6 +277,7 @@ void ovenFunc(Meal *meal, CookData *cook, int comingPurpose)
     }
     else if (comingPurpose == 1)
     { // If cook come to oven for taking
+        if(cook->mealInOven->status  == CANCELED) return;
         sem_wait(&oven_aperture_semaphore);
         sem_wait(&oven_door_semaphore);
 
@@ -270,18 +328,37 @@ void *cookThreadFunc(void *arg)
             continue;
         }
 
+        if (meal->status == CANCELED)
+        {
+            // printf("merhaba2 %d \n", meal->status);
+            continue;
+        }
+
         // Simulate meal preparation time
         printf("Cook(%d) preparing meal %d for order %d\n", cook->id, meal->mealId, meal->orderPid);
         cook->preparingTime = pseudoInverseMatrix(cook);
+            pthread_mutex_lock(&all_meals_mutex);
+        if (meal->status == CANCELED)
+        {
+            // printf("merhaba %d \n", meal->status);
+            continue;
+        }
         meal->status = PREPARED;
+            pthread_mutex_unlock(&all_meals_mutex);
         sendMealStatus(meal);
         ovenFunc(meal, cook, 0); // Put meal in oven
     }
 }
 
+double calculateDistance(double x1, double y1, double x2, double y2)
+{
+    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+}
+
 void *deliveryThreadFunc(void *arg)
 {
     DeliveryData *data = (DeliveryData *)arg;
+
     while (1)
     {
         data->meal_index = 0;
@@ -291,7 +368,6 @@ void *deliveryThreadFunc(void *arg)
         {
             if (total_meals_received == total_meals_cooked && !isQueueEmpty(delivery_queue))
             {
-                
                 Meal *meal = (Meal *)dequeue(delivery_queue);
                 data->meals[data->meal_index++] = meal;
                 break;
@@ -310,15 +386,35 @@ void *deliveryThreadFunc(void *arg)
 
         for (int i = 0; i < data->meal_index; i++)
         {
-            // Simulate delivery time
-            data->meals[i]->status = IN_DELIVERY;
-            sendMealStatus(data->meals[i]);
-            data->meal_count++;
-            printf("Delivery person(%d) delivering meal %d for order %d\n", data->id, data->meals[i]->mealId, data->meals[i]->orderPid);
-            sleep(1); // Simulate time
+            Meal *meal = data->meals[i];
+            if (meal->status == CANCELED)
+            {
+                printf("Delivery person(%d) skipping canceled meal %d for order %d\n", data->id, meal->mealId, meal->orderPid);
+                continue;
+            }
 
-            data->meals[i]->status = DELIVERED;
-            sendMealStatus(data->meals[i]);
+            double distanceToCustomer = calculateDistance(shopX, shopY, meal->x, meal->y);
+            double distanceBackToShop = calculateDistance(meal->x, meal->y, shopX, shopY);
+            double totalDistance = distanceToCustomer + distanceBackToShop;
+
+            // Simulate delivery time
+            pthread_mutex_lock(&all_meals_mutex);
+            meal->status = IN_DELIVERY;
+            pthread_mutex_unlock(&all_meals_mutex);
+            sendMealStatus(meal);
+            data->meal_count++;
+            printf("Delivery person(%d) delivering meal %d for order %d\n", data->id, meal->mealId, meal->orderPid);
+            sleep(totalDistance / deliverySpeed);
+
+            if (meal->status == CANCELED)
+            {
+                continue;
+            }
+
+            pthread_mutex_lock(&all_meals_mutex);
+            meal->status = DELIVERED;
+            pthread_mutex_unlock(&all_meals_mutex);
+            sendMealStatus(meal);
         }
     }
 }
@@ -334,7 +430,13 @@ int main(int argc, char *argv[])
     int portnumber = atoi(argv[1]);
     int cookThreadPoolSize = atoi(argv[2]);
     int deliveryPoolSize = atoi(argv[3]);
-    int deliverySpeed = atoi(argv[4]);
+    deliverySpeed = atoi(argv[4]);
+
+    struct sigaction sa;
+    sa.sa_handler = handle_sigpipe;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGPIPE, &sa, NULL);
 
     pthread_t phone_thread, cook_threads[cookThreadPoolSize], delivery_threads[deliveryPoolSize];
     CookData cook_data[cookThreadPoolSize];
@@ -348,6 +450,7 @@ int main(int argc, char *argv[])
     meals_queue = createQueue();
     delivery_queue = createQueue();
     oven_list = createLinkedList();
+    all_meals_list = createLinkedList();
 
     pthread_create(&phone_thread, NULL, phonethreadfunc, &portnumber);
 
@@ -389,12 +492,14 @@ int main(int argc, char *argv[])
     pthread_mutex_destroy(&delivery_mutex);
     pthread_mutex_destroy(&delivery_mutex_for_bag);
     pthread_mutex_destroy(&cooked_meals_mutex);
+    pthread_mutex_destroy(&all_meals_mutex);
     pthread_cond_destroy(&cook_cond);
     pthread_cond_destroy(&delivery_cond);
 
     freeQueue(meals_queue);
     freeQueue(delivery_queue);
     freeLinkedList(oven_list);
+    freeLinkedList(all_meals_list);
 
     return 0;
 }

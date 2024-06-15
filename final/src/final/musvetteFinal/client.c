@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <signal.h>
 
 #define BUFFER_SIZE 1024
 
@@ -12,7 +13,8 @@ typedef enum
     PREPARED,
     COOKED,
     IN_DELIVERY,
-    DELIVERED
+    DELIVERED,
+    CANCELED
 } MealStatus;
 
 typedef struct
@@ -36,6 +38,10 @@ typedef struct
     Meal *meals; // Pointer to meals array
 } Order;
 
+int sockfd;
+int portnumber;
+Order order;
+
 const char *getStatusString(MealStatus status)
 {
     switch (status)
@@ -50,6 +56,8 @@ const char *getStatusString(MealStatus status)
         return "IN_DELIVERY";
     case DELIVERED:
         return "DELIVERED";
+    case CANCELED:
+        return "CANCELED";
     default:
         return "UNKNOWN";
     }
@@ -165,6 +173,29 @@ void receive_updates(int sockfd, int numberOfMeals)
     }
 }
 
+void handle_signal(int sig)
+{
+    Order cancelOrder;
+    cancelOrder.pid = order.pid;
+    cancelOrder.id = order.id;
+    cancelOrder.townWidth = order.townWidth;
+    cancelOrder.townHeight = order.townHeight;
+    cancelOrder.numberOfMeals = 1;
+    cancelOrder.clientSocket = order.clientSocket;
+    cancelOrder.meals = (Meal *)malloc(sizeof(Meal));
+    cancelOrder.meals[0].orderPid = order.pid;
+    cancelOrder.meals[0].mealId = -1;
+    cancelOrder.meals[0].x = 0;
+    cancelOrder.meals[0].y = 0;
+    cancelOrder.meals[0].status = CANCELED;
+    cancelOrder.meals[0].clientSocket = sockfd;
+    int tempSockfd = connect_to_server(portnumber);
+    send_order(tempSockfd, &cancelOrder);
+    free(cancelOrder.meals);
+
+    exit(0);
+}
+
 int main(int argc, char *argv[])
 {
     if (argc != 5)
@@ -173,14 +204,16 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    int portnumber = atoi(argv[1]);
+    signal(SIGINT, handle_signal);
+
+    portnumber = atoi(argv[1]);
     int numberOfMeals = atoi(argv[2]);
     double p = atof(argv[3]);
     double q = atof(argv[4]);
 
-    int sockfd = connect_to_server(portnumber);
+    sockfd = connect_to_server(portnumber);
 
-    Order order = generate_order(p, q, numberOfMeals);
+    order = generate_order(p, q, numberOfMeals);
     send_order(sockfd, &order);
 
     receive_updates(sockfd, numberOfMeals);
